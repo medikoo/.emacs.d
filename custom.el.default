@@ -1,0 +1,32 @@
+(custom-set-variables
+	;; custom-set-variables was added by Custom.
+	;; If you edit it by hand, you could mess it up, so be careful.
+	;; Your init file should contain only one such instance.
+	;; If there is more than one, they won't work right.
+	'(auto-save-file-name-transforms
+		(list (list ".*" (concat my-dotfiles-dir "auto-save-list/") t)))
+	'(backup-directory-alist
+		(list (cons "." (concat my-dotfiles-dir "backups/"))))
+	'(case-fold-search nil)
+	'(delete-by-moving-to-trash t)
+	'(echo-keystrokes 0.1)
+	'(ediff-window-setup-function (quote ediff-setup-windows-plain))
+	'(ido-create-new-buffer (quote always))
+	'(ido-enable-flex-matching t)
+	'(ido-use-filename-at-point t)
+	'(imenu-auto-rescan t)
+	'(indicate-empty-lines t)
+	'(inhibit-startup-screen t)
+	'(js2-basic-offset tab-width)
+	'(js2-highlight-level 3)
+	'(message-log-max t)
+	'(mouse-wheel-mode t)
+	'(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
+	(list 'save-place-file (concat my-dotfiles-dir "places"))
+	'(shift-select-mode nil)
+	'(truncate-partial-width-windows nil)
+	'(uniquify-buffer-name-style (quote forward) nil (uniquify))
+	'(visible-bell t)
+	'(whitespace-line-column fill-column)
+	'(whitespace-style (quote (trailing lines-tail empty indentation
+				space-after-tab space-before-tab))))
