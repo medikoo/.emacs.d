@@ -48,7 +48,7 @@
 (add-to-list 'load-path my-dotfiles-dir)
 (add-to-list 'load-path my-vendor-dir)
 
-;; Compile
+;; Compile when needed
 (defun my-recompile-all ()
 	(byte-recompile-directory my-dotfiles-dir 0))
 (my-recompile-all)
