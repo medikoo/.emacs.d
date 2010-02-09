@@ -1,1 +1,8 @@
 .DS_Store
+*.elc
+backups
+custom.el
+loaddefs.el
+loaddefs.el~
+places
+auto-save-list
