@@ -101,9 +101,10 @@
 (load custom-file 'noerror)
 
 ;; Color theme
-;; Emacs's win.el overrides our settings if we just load them here
-;; (Needs to be loaded via hook, due to Emacs bug:
-;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434
+
+;; If we just load theme here Emacs's win.el overrides face values
+;; (http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434 )
+;; so we're loading it later through `window-setup-hook':
 (add-hook 'window-setup-hook my-color-theme)
 
 ;; Screen manager
