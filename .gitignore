@@ -1,6 +1,7 @@
 .DS_Store
 *.elc
 backups
+config.el
 custom.el
 loaddefs.el
 loaddefs.el~

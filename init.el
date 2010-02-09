@@ -72,6 +72,8 @@
 (recentf-mode 1)
 (show-paren-mode 1)
 (ido-mode t)
+(color-theme-initialize)
+(setq my-default-color-theme 'color-theme-my-charcoal-black)
 
 ;; Default buffer local values
 (setq-default fill-column 80)
@@ -85,7 +87,7 @@
 ;; Custom key bindings
 (load (concat my-dotfiles-dir "keys"))
 
-;; Mode customizations
+;; Mode-specific customizations
 (load (concat my-dotfiles-dir "mode-helpers"))
 (load (concat my-dotfiles-dir "modes"))
 
@@ -98,5 +100,8 @@
 ;; Custom settings
 (load custom-file 'noerror)
 
-;; Load screen manager
+;; Color theme
+(funcall my-default-color-theme)
+
+;; Screen manager
 (my-screen-init)
