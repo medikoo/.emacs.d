@@ -48,6 +48,12 @@
 (add-to-list 'load-path my-dotfiles-dir)
 (add-to-list 'load-path my-vendor-dir)
 
+;; Compile
+(defun my-recompile-all ()
+	(byte-recompile-directory my-dotfiles-dir 0))
+(my-recompile-all)
+(add-hook 'kill-emacs-hook 'my-recompile-all)
+
 ;; Autoload
 (require 'cl)
 (setq generated-autoload-file (concat my-dotfiles-dir "loaddefs.el"))
