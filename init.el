@@ -73,7 +73,7 @@
 (show-paren-mode 1)
 (ido-mode t)
 (color-theme-initialize)
-(setq my-default-color-theme 'color-theme-my-charcoal-black)
+(setq my-color-theme 'color-theme-my-charcoal-black)
 
 ;; Default buffer local values
 (setq-default fill-column 80)
@@ -101,7 +101,10 @@
 (load custom-file 'noerror)
 
 ;; Color theme
-(funcall my-default-color-theme)
+;; Emacs's win.el overrides our settings if we just load them here
+;; (Needs to be loaded via hook, due to Emacs bug:
+;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434
+(add-hook 'window-setup-hook my-color-theme)
 
 ;; Screen manager
 (my-screen-init)
