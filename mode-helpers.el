@@ -41,6 +41,14 @@
 	"Turn on `whitespace-mode'"
 	(whitespace-mode t))
 
+(defun my-whitespace-mode-reload ()
+	(if whitespace-mode
+		(progn
+			(whitespace-mode)
+			(whitespace-mode))))
+
+(add-hook 'hack-local-variables-hook 'my-whitespace-mode-reload)
+
 (defun my-paredit-mode ()
 	"Turn on `paredit-mode'"
 	(paredit-mode 1))
