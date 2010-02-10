@@ -8,6 +8,7 @@
 	'(backup-directory-alist
 		(list (cons "." (concat my-dotfiles-dir "backups/"))))
 	'(case-fold-search nil)
+	'(color-theme-legal-frame-parameters "\\(color\\|mode\\|alpha\\)$")
 	'(delete-by-moving-to-trash t)
 	'(echo-keystrokes 0.1)
 	'(ediff-window-setup-function (quote ediff-setup-windows-plain))
@@ -28,5 +29,5 @@
 	'(uniquify-buffer-name-style (quote forward) nil (uniquify))
 	'(visible-bell t)
 	'(whitespace-line-column fill-column)
-	'(whitespace-style (quote (trailing lines-tail empty indentation
+	'(whitespace-style (quote (trailing lines-tail indentation
 				space-after-tab space-before-tab))))
