@@ -6,4 +6,5 @@ custom.el
 loaddefs.el
 loaddefs.el~
 places
+tramp
 auto-save-list
