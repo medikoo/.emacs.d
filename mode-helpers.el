@@ -42,10 +42,15 @@
 	(whitespace-mode t))
 
 (defun my-whitespace-mode-reload ()
-	(if whitespace-mode
+	"Reloads `whitespace-mode'.
+	Used after load of directory locals."
+	(if (and (boundp 'whitespace-mode) whitespace-mode)
 		(progn
-			(whitespace-mode)
-			(whitespace-mode))))
+			(whitespace-mode nil)
+			(whitespace-mode t)
+			;; Reload mode to make sure syntax highlight is on
+			;; (for some modes is lost after toggling ws).
+			(funcall major-mode))))
 
 (add-hook 'hack-local-variables-hook 'my-whitespace-mode-reload)
 
