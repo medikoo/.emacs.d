@@ -59,6 +59,13 @@
 ;; haml-mode
 (add-hook 'haml-mode-hook 'my-coding-hook-run)
 
+;; html-mode
+(add-to-list 'auto-mode-alist '("\\.ftl$" . html-mode))
+(add-hook 'html-mode-hook 'my-coding-hook-run)
+
+;; js2-mode
+(add-hook 'js2-mode-hook 'my-coding-hook-run)
+
 ;; lisp-mode
 (add-hook 'lisp-mode-hook 'my-coding-hook-run)
 (add-hook 'lisp-mode-hook 'my-paredit-mode)
