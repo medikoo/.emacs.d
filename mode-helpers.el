@@ -39,13 +39,13 @@
 
 (defun my-whitespace-mode ()
 	"Turn on `whitespace-mode'"
-	(whitespace-mode t))
+	(whitespace-mode -1)
+	(whitespace-mode 1))
 
-(defun my-major-mode-reload ()
-	(funcall major-mode))
-
-;; Some modes (e.g. `whitespace-mode') doesn't know about changes set by dir locals.
-(add-hook 'hack-local-variables-hook 'my-major-mode-reload)
+;; Reload hooks after dir locals update
+(defun my-hack-local-variables-hook ()
+	(run-hooks (intern (concat (symbol-name major-mode) "-hook"))))
+(add-hook 'hack-local-variables-hook 'my-hack-local-variables-hook)
 
 (defun my-paredit-mode ()
 	"Turn on `paredit-mode'"
