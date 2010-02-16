@@ -42,10 +42,12 @@
 	(whitespace-mode -1)
 	(whitespace-mode 1))
 
-;; Reload hooks after dir locals update
-(defun my-hack-local-variables-hook ()
-	(run-hooks (intern (concat (symbol-name major-mode) "-hook"))))
-(add-hook 'hack-local-variables-hook 'my-hack-local-variables-hook)
+;; Make sure dir locals are set after major mode change.
+;; Load (my) major mode hooks afterwards.
+(defun my-after-change-major-mode ()
+	(hack-local-variables)
+	(run-hooks (intern (concat "my-" (symbol-name major-mode) "-hook"))))
+(add-hook 'after-change-major-mode-hook 'my-after-change-major-mode)
 
 (defun my-paredit-mode ()
 	"Turn on `paredit-mode'"

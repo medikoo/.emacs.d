@@ -27,67 +27,95 @@
 (add-hook 'my-coding-hook 'my-whitespace-mode)
 
 ;; clojure-mode
-(add-hook 'clojure-mode-hook 'my-coding-hook-run)
-(add-hook 'clojure-mode-hook 'my-paredit-mode)
-(add-hook 'clojure-mode-hook 'my-pretty-lambdas)
+(defvar my-clojure-mode-hook nil
+	"Hook that gest run on activation of `closure-mode' but after file locals.")
+(add-hook 'my-clojure-mode-hook 'my-coding-hook-run)
+(add-hook 'my-clojure-mode-hook 'my-paredit-mode)
+(add-hook 'my-clojure-mode-hook 'my-pretty-lambdas)
 (require 'my-indent/lisp)
-(add-hook 'clojure-mode-hook 'my-indent-set-lisp)
+(add-hook 'my-clojure-mode-hook 'my-indent-set-lisp)
 
 ;; conf-mode
-(add-hook 'conf-mode-hook 'my-coding-hook-run)
+(defvar my-conf-mode-hook nil
+	"Hook that gest run on activation of `conf-mode' but after file locals.")
+(add-hook 'my-conf-mode-hook 'my-coding-hook-run)
 (require 'my-indent/conf)
-(add-hook 'conf-mode-hook 'my-indent-set-conf)
+(add-hook 'my-conf-mode-hook 'my-indent-set-conf)
 
 ;; css-mode
-(add-hook 'css-mode-hook 'my-coding-hook-run)
+(defvar my-css-mode-hook nil
+	"Hook that gest run on activation of `css-mode' but after file locals.")
+(add-hook 'my-css-mode-hook 'my-coding-hook-run)
 
 ;; dns-mode
-(add-hook 'dns-mode-hook 'my-coding-hook-run)
+(defvar my-dns-mode-hook nil
+	"Hook that gest run on activation of `dns-mode' but after file locals.")
+(add-hook 'my-dns-mode-hook 'my-coding-hook-run)
 (require 'my-indent/dns)
-(add-hook 'dns-mode-hook 'my-indent-set-dns)
+(add-hook 'my-dns-mode-hook 'my-indent-set-dns)
 
 ;; emacs-lisp mode
-(add-hook 'emacs-lisp-mode-hook 'my-coding-hook-run)
-(add-hook 'emacs-lisp-mode-hook 'my-paredit-mode)
-(add-hook 'emacs-lisp-mode-hook 'my-pretty-lambdas)
+(defvar my-emacs-lisp-mode-hook nil
+	"Hook that gest run on activation of `emacs-lisp-mode' but after file locals.")
+(add-hook 'my-emacs-lisp-mode-hook 'my-coding-hook-run)
+(add-hook 'my-emacs-lisp-mode-hook 'my-paredit-mode)
+(add-hook 'my-emacs-lisp-mode-hook 'my-pretty-lambdas)
 (require 'my-indent/lisp)
-(add-hook 'emacs-lisp-mode-hook 'my-indent-set-lisp)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook 'my-remove-elc-on-save)
+(add-hook 'my-emacs-lisp-mode-hook 'my-indent-set-lisp)
+(add-hook 'my-emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'my-emacs-lisp-mode-hook 'my-remove-elc-on-save)
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
 
 ;; haml-mode
-(add-hook 'haml-mode-hook 'my-coding-hook-run)
+(defvar my-haml-mode-hook nil
+	"Hook that gest run on activation of `haml-mode' but after file locals.")
+(add-hook 'my-haml-mode-hook 'my-coding-hook-run)
 
 ;; html-mode
+(defvar my-html-mode-hook nil
+	"Hook that gest run on activation of `html-mode' but after file locals.")
 (add-to-list 'auto-mode-alist '("\\.ftl$" . html-mode))
-(add-hook 'html-mode-hook 'my-coding-hook-run)
+(add-hook 'my-html-mode-hook 'my-coding-hook-run)
 
 ;; js2-mode
-(add-hook 'js2-mode-hook 'my-coding-hook-run)
+(defvar my-js2-mode-hook nil
+	"Hook that gest run on activation of `js2-mode' but after file locals.")
+(add-hook 'my-js2-mode-hook 'my-coding-hook-run)
 
 ;; lisp-mode
-(add-hook 'lisp-mode-hook 'my-coding-hook-run)
-(add-hook 'lisp-mode-hook 'my-paredit-mode)
-(add-hook 'lisp-mode-hook 'my-pretty-lambdas)
+(defvar my-lisp-mode-hook nil
+	"Hook that gest run on activation of `lisp-mode' but after file locals.")
+(add-hook 'my-lisp-mode-hook 'my-coding-hook-run)
+(add-hook 'my-lisp-mode-hook 'my-paredit-mode)
+(add-hook 'my-lisp-mode-hook 'my-pretty-lambdas)
 (require 'my-indent/lisp)
-(add-hook 'lisp-mode-hook 'my-indent-set-lisp)
+(add-hook 'my-lisp-mode-hook 'my-indent-set-lisp)
 
 ;; php-mode
-(add-hook 'php-mode-hook 'my-coding-hook-run)
+(defvar my-php-mode-hook nil
+	"Hook that gest run on activation of `php-mode' but after file locals.")
+(add-hook 'my-php-mode-hook 'my-coding-hook-run)
 
 ;; python-mode
-(add-hook 'python-mode-hook 'my-coding-hook-run)
+(defvar my-python-mode-hook nil
+	"Hook that gest run on activation of `python-mode' but after file locals.")
+(add-hook 'my-python-mode-hook 'my-coding-hook-run)
 
 ;; ruby-mode
-(add-hook 'ruby-mode-hook 'my-coding-hook-run)
+(defvar my-ruby-mode-hook nil
+	"Hook that gest run on activation of `ruby-mode' but after file locals.")
+(add-hook 'my-ruby-mode-hook 'my-coding-hook-run)
 
 ;; sass-mode
-(add-hook 'sass-mode-hook 'my-coding-hook-run)
+(defvar my-sass-mode-hook nil
+	"Hook that gest run on activation of `sass-mode' but after file locals.")
+(add-hook 'my-sass-mode-hook 'my-coding-hook-run)
 
 ;; scheme-mode
-(add-hook 'scheme-mode-hook 'my-coding-hook-run)
-(add-hook 'scheme-mode-hook 'my-paredit-mode)
-(add-hook 'scheme-mode-hook 'my-pretty-lambdas)
+(defvar my-scheme-mode-hook nil
+	"Hook that gest run on activation of `scheme-mode' but after file locals.")
+(add-hook 'my-scheme-mode-hook 'my-coding-hook-run)
+(add-hook 'my-scheme-mode-hook 'my-paredit-mode)
+(add-hook 'my-scheme-mode-hook 'my-pretty-lambdas)
 (require 'my-indent/lisp)
-(add-hook 'scheme-mode-hook 'my-indent-set-lisp)
+(add-hook 'my-scheme-mode-hook 'my-indent-set-lisp)
