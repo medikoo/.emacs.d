@@ -1,5 +1,6 @@
 .DS_Store
 *.elc
+\#*#
 backups
 config.el
 custom.el
