@@ -50,7 +50,10 @@
 
 ;; Compile when needed
 (defun my-recompile-all ()
-	(byte-recompile-directory my-dotfiles-dir 0))
+	(let ((noninteractive-default noninteractive))
+		(setq noninteractive t)
+		(byte-recompile-directory my-dotfiles-dir 0)
+		(setq noninteractive noninteractive-default)))
 (my-recompile-all)
 (add-hook 'kill-emacs-hook 'my-recompile-all)
 
