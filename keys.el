@@ -52,16 +52,16 @@
 
 (defun my-keys-prority ()
 	(if (not (eq (car (car minor-mode-map-alist)) 'my-keys-minor-mode))
-			(let (gotit x)
-				(progn
-					(setq gotit nil)
-					(dolist (x minor-mode-map-alist)
-						(if (eq (car x) 'my-keys-minor-mode)
-								(setq gotit x)))
-					(if gotit
-							(progn
-								(delete gotit minor-mode-map-alist)
-								(setq minor-mode-map-alist
-									(cons gotit minor-mode-map-alist))))))))
+		(let (gotit x)
+			(progn
+				(setq gotit nil)
+				(dolist (x minor-mode-map-alist)
+					(if (eq (car x) 'my-keys-minor-mode)
+						(setq gotit x)))
+				(if gotit
+					(progn
+						(delete gotit minor-mode-map-alist)
+						(setq minor-mode-map-alist
+							(cons gotit minor-mode-map-alist))))))))
 
 (add-hook 'after-change-major-mode-hook 'my-keys-prority)
