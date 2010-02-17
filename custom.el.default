@@ -9,6 +9,7 @@
 		(list (cons "." (concat my-dotfiles-dir "backups/"))))
 	'(case-fold-search nil)
 	'(color-theme-legal-frame-parameters "\\(color\\|mode\\|alpha\\)$")
+	'(css-indent-offset tab-width)
 	'(delete-by-moving-to-trash t)
 	'(echo-keystrokes 0.1)
 	'(ediff-window-setup-function (quote ediff-setup-windows-plain))
