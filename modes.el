@@ -26,6 +26,12 @@
 (add-hook 'my-coding-hook 'my-hl-line-mode)
 (add-hook 'my-coding-hook 'my-whitespace-mode)
 
+;; Emacs lisp source specific customizations
+(dir-locals-set-class-variables 'elisp
+	'((emacs-lisp-mode . ((indent-tabs-mode . nil)))))
+(dir-locals-set-directory-class
+	my-elisp-dir 'elisp)
+
 ;; clojure-mode
 (defvar my-clojure-mode-hook nil
 	"Hook that gest run on activation of `closure-mode' but after file locals.")
