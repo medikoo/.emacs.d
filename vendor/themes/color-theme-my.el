@@ -24,8 +24,7 @@
   (interactive)
   (color-theme-install
     '(color-theme-my-charcoal-black
-      ((alpha . 97)
-        (background-color . "#181818")
+      ((background-color . "#181818")
         (background-mode . dark)
         (border-color . "Grey")
         (cursor-color . "Grey")

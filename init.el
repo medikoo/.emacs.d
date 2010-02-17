@@ -79,7 +79,6 @@
 (show-paren-mode 1)
 (ido-mode t)
 (color-theme-initialize)
-(setq my-color-theme 'color-theme-my-charcoal-black)
 
 ;; Default buffer local values
 (setq-default fill-column 80)
@@ -101,6 +100,8 @@
 (load (concat my-dotfiles-dir (symbol-name system-type)) 'noerror)
 
 ;; User-specific customizations
+(setq my-color-theme 'color-theme-my-charcoal-black)
+(setq my-frame-alpha 97)
 (load (concat my-dotfiles-dir "config.el") 'noerror)
 
 ;; Custom settings
@@ -112,6 +113,9 @@
 ;; (http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434 )
 ;; so we're loading it again later through `window-setup-hook':
 (add-hook 'window-setup-hook my-color-theme)
+
+;; Frame alpha
+(modify-all-frames-parameters (list (cons 'alpha my-frame-alpha)))
 
 ;; Screen manager
 (my-screen-init)
