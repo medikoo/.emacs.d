@@ -109,9 +109,9 @@
 
 ;; Color theme
 (funcall my-color-theme)
-;; If we just load theme here Emacs's win.el overrides face values
-;; (http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434 )
-;; so we're loading it again later through `window-setup-hook':
+;; Emacs's win.el will override some face values
+;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434
+;; so we're loading it later again through `window-setup-hook'
 (add-hook 'window-setup-hook my-color-theme)
 
 ;; Frame alpha
