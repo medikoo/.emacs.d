@@ -65,7 +65,7 @@
 (update-directory-autoloads my-vendor-dir)
 (load generated-autoload-file)
 
-;; Load needed modules (that won't load through autoload)
+;; Load needed modules (ones that won't go automatically through autoload)
 (autoload 'paredit-mode "paredit"
 	"Minor mode for pseudo-structurally editing Lisp code." t)
 (require 'show-point-mode)
