@@ -81,12 +81,6 @@
 (show-paren-mode 1)
 (color-theme-initialize)
 
-;; Default buffer local values
-(setq-default fill-column 80)
-(setq-default indent-tabs-mode t)
-(setq-default tab-width 2)
-(setq-default save-place t)
-
 ;; Seed the random-number generator
 (random t)
 
@@ -101,6 +95,7 @@
 (load (concat my-dotfiles-dir (symbol-name system-type)) 'noerror)
 
 ;; User-specific customizations
+(setq my-tab-width 2)
 (setq my-color-theme 'color-theme-my-charcoal-black)
 (setq my-frame-alpha 97)
 (load (concat my-dotfiles-dir "config.el") 'noerror)
