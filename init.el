@@ -25,18 +25,17 @@
 ;;
 ;; This is the first thing to get loaded.
 
-;; Interface
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'blink-cursor-mode) (blink-cursor-mode 1))
+;; Configure interface
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
-;; Coding system
+;; Set coding system
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;; Environment variables
+;; Set environment variables
 (setq my-dotfiles-dir (file-name-directory (or (buffer-file-name)
 			load-file-name)))
 (setq my-elisp-dir (let*
@@ -55,27 +54,26 @@
 
 ;; Compile when needed
 (defun my-recompile-all ()
-	(let ((noninteractive-default noninteractive))
-		(setq noninteractive t)
-		(byte-recompile-directory my-dotfiles-dir 0)
-		(setq noninteractive noninteractive-default)))
+	(let ((noninteractive t))
+		(byte-recompile-directory my-dotfiles-dir 0)))
 (my-recompile-all)
 (add-hook 'kill-emacs-hook 'my-recompile-all)
 
-;; Autoload
+;; Generate and load autoloads
 (require 'cl)
 (setq generated-autoload-file (concat my-dotfiles-dir "loaddefs.el"))
 (update-directory-autoloads my-vendor-dir)
 (load generated-autoload-file)
 
-;; Load (no autoload) modules
+;; Load needed modules (that won't load through autoload)
 (autoload 'paredit-mode "paredit"
 	"Minor mode for pseudo-structurally editing Lisp code." t)
 (require 'show-point-mode)
 (require 'saveplace)
 (require 'my-screen/my-screen)
 
-;; Helpful modes
+;; Turn on helpful modes
+(blink-cursor-mode 1)
 (auto-compression-mode t)
 (recentf-mode 1)
 (show-paren-mode 1)
@@ -84,7 +82,7 @@
 ;; Seed the random-number generator
 (random t)
 
-;; Custom key bindings
+;; Customize key bindings
 (load (concat my-dotfiles-dir "keys"))
 
 ;; Mode-specific customizations
@@ -99,19 +97,17 @@
 (setq my-color-theme 'color-theme-my-charcoal-black)
 (setq my-frame-alpha 97)
 (load (concat my-dotfiles-dir "config.el") 'noerror)
-
-;; Custom settings
 (load custom-file 'noerror)
 
-;; Color theme
+;; Load color theme
 (funcall my-color-theme)
 ;; Emacs's win.el will override some face values
 ;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434
 ;; so we're loading it later again through `window-setup-hook'
 (add-hook 'window-setup-hook my-color-theme)
 
-;; Frame alpha
+;; Set frame alpha
 (modify-all-frames-parameters (list (cons 'alpha my-frame-alpha)))
 
-;; Screen manager
+;; Load screen manager
 (my-screen-init)
