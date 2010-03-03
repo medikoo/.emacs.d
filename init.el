@@ -49,7 +49,6 @@
 (if (and (not (file-exists-p custom-file))
 		(file-exists-p my-custom-file-default))
 	(copy-file my-custom-file-default custom-file))
-(add-to-list 'load-path my-dotfiles-dir)
 (add-to-list 'load-path my-vendor-dir)
 
 ;; Compile when needed
