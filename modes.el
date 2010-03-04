@@ -54,6 +54,7 @@
 (add-hook 'my-css-mode-hook 'my-coding-hook-run)
 
 ;; dns-mode
+(add-to-list 'magic-mode-alist '("\\$TTL[ \t]+[0-9]+[ \t]*\n" . dns-mode))
 (defvar my-dns-mode-hook nil
 	"Hook that gest run on activation of `dns-mode' but after file locals.")
 (add-hook 'my-dns-mode-hook 'my-coding-hook-run)
