@@ -107,6 +107,8 @@
 (defvar my-python-mode-hook nil
 	"Hook that gest run on activation of `python-mode' but after file locals.")
 (add-hook 'my-python-mode-hook 'my-coding-hook-run)
+(add-hook 'python-mode-hook 'my-reset-indent-tabs-mode)
+(add-hook 'python-mode-hook 'my-reset-tab-width)
 
 ;; ruby-mode
 (defvar my-ruby-mode-hook nil

@@ -42,6 +42,16 @@
 	(whitespace-mode -1)
 	(whitespace-mode 1))
 
+(defun my-reset-indent-tabs-mode ()
+	"Reset `indent-tabs-mode' to its default.
+	Some modes force own setting, we may don't like that."
+	(kill-local-variable 'indent-tabs-mode))
+
+(defun my-reset-tab-width ()
+	"Reset `tab-width' to its default.
+	Some modes force own setting, we may don't like that."
+	(kill-local-variable 'tab-width))
+
 ;; Make sure dir locals are set after major mode change.
 ;; Load (my) major mode hooks afterwards.
 (defun my-after-change-major-mode ()
