@@ -38,10 +38,7 @@
 ;; Set environment variables
 (setq my-dotfiles-dir (file-name-directory (or (buffer-file-name)
 			load-file-name)))
-(setq my-elisp-dir (let*
-		((buffer (car (find-function-noselect 'add-hook)))
-			(path (buffer-file-name buffer)))
-		(kill-buffer buffer)
+(setq my-elisp-dir (let ((path (find-library-name "subr")))
 		(substring path 0 (+ 1 (string-match "/lisp/" path)))))
 (setq my-vendor-dir (concat my-dotfiles-dir "vendor/"))
 (setq my-custom-file-default (concat my-dotfiles-dir "custom.el.default"))
