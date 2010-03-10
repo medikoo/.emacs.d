@@ -90,6 +90,7 @@
 
 ;; User-specific customizations
 (setq my-tab-width 2)
+(setq my-indent-tabs-mode t)
 (setq my-color-theme 'color-theme-my-charcoal-black)
 (setq my-frame-alpha 97)
 (load (concat my-dotfiles-dir "config.el") 'noerror)
