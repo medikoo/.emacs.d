@@ -41,12 +41,14 @@
 (setq my-elisp-dir (let ((path (symbol-file 'add-hook 'defun)))
 		(substring path 0 (+ 1 (string-match "/lisp/" path)))))
 (setq my-vendor-dir (concat my-dotfiles-dir "vendor/"))
+(setq my-vendor-user-dir (concat my-vendor-dir "user/"))
 (setq my-custom-file-default (concat my-dotfiles-dir "custom.el.default"))
 (setq custom-file (concat my-dotfiles-dir "custom.el"))
 (if (and (not (file-exists-p custom-file))
 		(file-exists-p my-custom-file-default))
 	(copy-file my-custom-file-default custom-file))
 (add-to-list 'load-path my-vendor-dir)
+(add-to-list 'load-path my-vendor-user-dir)
 
 ;; Compile when needed
 (defun my-recompile-all ()
@@ -58,7 +60,7 @@
 ;; Generate and load autoloads
 (require 'cl)
 (setq generated-autoload-file (concat my-dotfiles-dir "loaddefs.el"))
-(update-directory-autoloads my-vendor-dir)
+(update-directory-autoloads my-vendor-dir my-vendor-user-dir)
 (load generated-autoload-file)
 
 ;; Load needed modules (ones that won't go automatically through autoload)
