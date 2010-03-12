@@ -78,6 +78,7 @@
 (defvar my-haml-mode-hook nil
 	"Hook that gest run on activation of `haml-mode' but after file locals.")
 (add-hook 'my-haml-mode-hook 'my-coding-hook-run)
+(add-hook 'haml-mode-hook 'my-reset-indent-tabs-mode)
 
 ;; html-mode
 (defvar my-html-mode-hook nil
