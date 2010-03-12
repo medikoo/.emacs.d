@@ -43,6 +43,7 @@
 
 ;; conf-mode
 (add-to-list 'auto-mode-alist '("/sites-\\(available\\|enabled\\)/" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.cnf$" . conf-mode))
 (defvar my-conf-mode-hook nil
 	"Hook that gest run on activation of `conf-mode' but after file locals.")
 (add-hook 'my-conf-mode-hook 'my-coding-hook-run)
