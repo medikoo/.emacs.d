@@ -55,6 +55,9 @@
 	"Hook that gest run on activation of `css-mode' but after file locals.")
 (add-hook 'my-css-mode-hook 'my-coding-hook-run)
 
+;; django-mode
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . django-mode))
+
 ;; dns-mode
 (add-to-list 'magic-mode-alist '("\\$TTL[ \t]+[0-9]+[ \t]*\n" . dns-mode))
 (defvar my-dns-mode-hook nil
