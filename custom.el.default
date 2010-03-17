@@ -29,6 +29,7 @@
 	'(mode-require-final-newline nil)
 	'(mouse-wheel-mode t)
 	'(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
+	'(python-guess-indent nil)
 	'(python-indent my-tab-width)
 	'(ruby-indent-tabs-mode my-indent-tabs-mode)
 	'(ruby-insert-encoding-magic-comment nil)
