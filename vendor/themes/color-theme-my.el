@@ -354,7 +354,10 @@
       (woman-bold-face ((t (:bold t :foreground "sky blue" :weight bold))))
       (woman-italic-face ((t (:foreground "deep sky blue"))))
       (woman-unknown-face ((t (:foreground "LightSalmon"))))
-      (zmacs-region ((t (:background "DarkSlateBlue")))))))
+      (zmacs-region ((t (:background "DarkSlateBlue"))))
+      (sml-modeline-end-face ((t (:background "grey75"))))
+      (sml-modeline-vis-face ((t (:background "grey60"))))
+)))
 
 ;; Copyright (C) 2008 Jason R. Blevins <jrblevin@sdf.lonestar.org>
 (defun color-theme-less ()

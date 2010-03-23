@@ -75,6 +75,7 @@
 (auto-compression-mode t)
 (recentf-mode 1)
 (show-paren-mode 1)
+(sml-modeline-mode)
 (color-theme-initialize)
 
 ;; Seed the random-number generator
