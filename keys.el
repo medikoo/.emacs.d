@@ -33,7 +33,6 @@
 (define-key my-keys-minor-mode-map (kbd "C-S-w")    'kill-word)
 (define-key my-keys-minor-mode-map (kbd "C-x C-k")  'kill-region)
 (define-key my-keys-minor-mode-map (kbd "<C-tab>")  'my-buffer-insert-tab-space)
-(define-key my-keys-minor-mode-map (kbd "<S-tab>")  'my-buffer-insert-tab)
 (define-key my-keys-minor-mode-map (kbd "C-x f")    'my-file-recent-ido)
 (define-key my-keys-minor-mode-map (kbd "C-c r")    'my-buffer-rename-file-or-buffer)
 
