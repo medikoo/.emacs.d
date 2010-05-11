@@ -25,6 +25,7 @@
 	'(inhibit-startup-screen t)
 	'(js2-basic-offset my-tab-width)
 	'(js2-highlight-level 3)
+	'(js2-mirror-mode nil)
 	'(message-log-max t)
 	'(mode-require-final-newline nil)
 	'(mouse-wheel-mode t)
