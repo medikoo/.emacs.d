@@ -143,8 +143,6 @@
 						(continued-expr-p js2-basic-offset)
 						(t 0)))))))
 
-
-
 ;; lisp-mode
 (defvar my-lisp-mode-hook nil
 	"Hook that gest run on activation of `lisp-mode' but after file locals.")
