@@ -77,6 +77,13 @@
 (show-paren-mode 1)
 (sml-modeline-mode)
 (color-theme-initialize)
+(if (and (not (file-exists-p (concat my-vendor-dir "snippets")))
+		(file-exists-p (concat my-vendor-dir "snippets.default")))
+	(my-directory-copy (concat my-vendor-dir "snippets.default")
+		(concat my-vendor-dir "snippets")))
+(require 'yasnippet)
+(yas/initialize)
+
 
 ;; Seed the random-number generator
 (random t)
@@ -96,6 +103,7 @@
 (setq my-indent-tabs-mode t)
 (setq my-color-theme 'color-theme-my-charcoal-black)
 (setq my-frame-alpha 97)
+(yas/load-directory (concat my-vendor-dir "snippets"))
 (load (concat my-dotfiles-dir "config.el") 'noerror)
 (load custom-file 'noerror)
 
