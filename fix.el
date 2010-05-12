@@ -1,4 +1,4 @@
-;; Original one works bad with search in lisp code
+;; Original one works bad when we try to search buffer within snippet
 ;; see http://code.google.com/p/yasnippet/issues/detail?id=139
 (defun yas/replace-backquotes ()
 	"Replace all the \"`(lisp-expression)`\"-style expression
