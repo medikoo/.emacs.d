@@ -84,6 +84,8 @@
 (require 'yasnippet)
 (yas/initialize)
 
+;; Fixes for broken or not working properly functions
+(load (concat my-dotfiles-dir "fix"))
 
 ;; Seed the random-number generator
 (random t)
@@ -91,7 +93,7 @@
 ;; Customize key bindings
 (load (concat my-dotfiles-dir "keys"))
 
-;; Mode-specific customizations
+;; Major Mode-specific customizations
 (load (concat my-dotfiles-dir "mode-helpers"))
 (load (concat my-dotfiles-dir "modes"))
 
