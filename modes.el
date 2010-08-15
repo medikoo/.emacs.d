@@ -154,6 +154,7 @@
 (add-hook 'my-lisp-mode-hook 'my-indent-set-lisp)
 
 ;; php-mode
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (defvar my-php-mode-hook nil
 	"Hook that gest run on activation of `php-mode' but after file locals.")
 (add-hook 'my-php-mode-hook 'my-coding-hook-run)
