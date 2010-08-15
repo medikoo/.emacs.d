@@ -82,3 +82,9 @@
 		(lambda ()
 			(if (file-exists-p (concat buffer-file-name "c"))
 				(delete-file (concat buffer-file-name "c"))))))
+
+(defun my-ftl-support ()
+	(interactive)
+	(if buffer-file-name
+			(if (string-equal (substring	buffer-file-name -4) ".ftl")
+					(ftl-mode 1))))

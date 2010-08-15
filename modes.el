@@ -88,6 +88,7 @@
 (defvar my-html-mode-hook nil
 	"Hook that gest run on activation of `html-mode' but after file locals.")
 (add-to-list 'auto-mode-alist '("\\.ftl$" . html-mode))
+(add-hook 'my-html-mode-hook 'my-ftl-support)
 (add-hook 'my-html-mode-hook 'my-coding-hook-run)
 
 ;; js2-mode
