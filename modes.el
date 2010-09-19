@@ -94,6 +94,7 @@
 ;; js2-mode
 (defvar my-js2-mode-hook nil
 	"Hook that gest run on activation of `js2-mode' but after file locals.")
+(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
 (add-hook 'my-js2-mode-hook 'my-coding-hook-run)
 
 (eval-after-load 'js2-mode
@@ -142,7 +143,34 @@
 									(current-column))))
 
 						(continued-expr-p js2-basic-offset)
-						(t 0)))))))
+						(t 0)))))
+
+		(defun my-js2-mode-split-string (parse-status)
+			"Turn a newline in mid-string into a string concatenation."
+			(let* ((col (current-column))
+					(quote-char (nth 3 parse-status))
+					(quote-string (string quote-char))
+					(string-beg (nth 8 parse-status))
+					(indent (save-match-data
+							(or
+								(save-excursion
+									(back-to-indentation)
+									(if (looking-at "\\+")
+										(current-column)))
+								(save-excursion
+									(goto-char string-beg)
+									(if (looking-back "\\+\\s-+")
+										(goto-char (match-beginning 0)))
+									(current-column))))))
+				(insert quote-char "\n")
+				(indent-to indent)
+				(insert "+ " quote-string)
+				(when (eolp)
+					(insert quote-string)
+					(backward-char 1))))
+
+
+))
 
 ;; lisp-mode
 (defvar my-lisp-mode-hook nil
