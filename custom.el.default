@@ -9,7 +9,6 @@
 		(list (list ".*" (concat my-dotfiles-dir "auto-save-list/") t)))
 	'(backup-directory-alist
 		(list (cons "." (concat my-dotfiles-dir "backups/"))))
-	'(case-fold-search nil)
 	'(css-indent-offset my-tab-width)
 	'(delete-by-moving-to-trash t)
 	'(echo-keystrokes 0.1)
