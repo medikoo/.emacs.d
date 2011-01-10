@@ -18,7 +18,6 @@
 	'(ido-create-new-buffer (quote always))
 	'(ido-enable-flex-matching t)
 	'(ido-mode (quote both) nil (ido))
-	'(ido-use-filename-at-point t)
 	'(imenu-auto-rescan t)
 	'(indent-tabs-mode my-indent-tabs-mode)
 	'(indicate-empty-lines t)
