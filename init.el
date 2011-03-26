@@ -90,6 +90,9 @@
 ;; Seed the random-number generator
 (random t)
 
+;; Make life easier
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Customize key bindings
 (load (concat my-dotfiles-dir "keys"))
 
@@ -100,11 +103,13 @@
 ;; System-specific customizations
 (load (concat my-dotfiles-dir (symbol-name system-type)) 'noerror)
 
-;; User-specific customizations
+;; Defaults
 (setq my-tab-width 2)
 (setq my-indent-tabs-mode t)
 (setq my-color-theme 'color-theme-my-charcoal-black)
 (setq my-frame-alpha 97)
+
+;; User-specific customizations
 (yas/load-directory (concat my-vendor-dir "snippets"))
 (load (concat my-dotfiles-dir "config.el") 'noerror)
 (load custom-file 'noerror)
