@@ -40,7 +40,7 @@
 (define-key my-keys-minor-mode-map (kbd "C-h a") 'apropos)
 
 (define-minor-mode my-keys-minor-mode
-	"A minor mode so that my key settings override annoying major modes."
+	"A minor mode that overrides specified key settings (in all major modes)."
 	t " my-keys" 'my-keys-minor-mode-map)
 
 (my-keys-minor-mode 1)
