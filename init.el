@@ -1,9 +1,9 @@
 ;; init.el --- Where everything begins
 ;;
-;; Copyright (C) 2008, 2009 Phil Hagelberg <technomacy@gmail.com>
-;; Copyright (C) 2010 Mariusz Nowak <mariusz+emacs@medikoo.com>
-;; Author: Phil Hagelberg <technomacy@gmail.com>
+;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs@medikoo.com>
 ;; Author: Mariusz Nowak <mariusz+emacs@medikoo.com>
+;; Inpired and initially based on Phil Hagelberg's Emacs Starter kit
+;; https://github.com/technomancy/emacs-starter-kit
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
