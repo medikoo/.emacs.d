@@ -68,7 +68,7 @@
 	"Minor mode for pseudo-structurally editing Lisp code." t)
 (require 'show-point-mode)
 (require 'saveplace)
-(require 'my-screen/my-screen)
+(require 'my-screen/el-screen)
 
 ;; Turn on helpful modes
 (blink-cursor-mode 1)
@@ -125,4 +125,4 @@
 (modify-all-frames-parameters (list (cons 'alpha my-frame-alpha)))
 
 ;; Load screen manager
-(my-screen-init)
+(el-screen-init)
