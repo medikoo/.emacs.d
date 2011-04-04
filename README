@@ -1,0 +1,30 @@
+emacs-starter --- Neat emacs initialization script for newcomer
+
+-------------------------------------------------------------------------------
+1. About
+-------------------------------------------------------------------------------
+
+Inpired and initially based on Phil Hagelberg's Emacs Starter kit ->
+http://github.com/technomancy/emacs-starter-kit
+
+If you want to try Emacs, start with this article ->
+http://sites.google.com/site/steveyegge2/effective-emacs
+Browse and have handy:
+Emacs Lisp (language in which you customize Emacs) manual ->
+http://www.gnu.org/software/emacs/manual/html_mono/elisp.html
+Emacs Editor manual ->
+http://www.gnu.org/software/emacs/manual/html_mono/emacs.html
+
+Read the code to see what this initialization script does.
+
+Script assumes that user sets his own settings by changing Emacs custom
+variables and by setting other within config.el file.
+Additional custom modules should land in vendor/user folder.
+
+-------------------------------------------------------------------------------
+2. Installation
+-------------------------------------------------------------------------------
+
+Clone project into your .emacs.d folder and initialize submodules:
+git submodule init
+git submodule update
