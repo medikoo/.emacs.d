@@ -68,7 +68,7 @@
 	"Minor mode for pseudo-structurally editing Lisp code." t)
 (require 'show-point-mode)
 (require 'saveplace)
-(require 'my-screen/el-screen)
+(require 'el-screen/el-screen)
 
 ;; Turn on helpful modes
 (blink-cursor-mode 1)
