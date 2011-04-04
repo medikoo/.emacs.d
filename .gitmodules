@@ -7,3 +7,6 @@
 [submodule "vendor/my-screen"]
 	path = vendor/my-screen
 	url = git@github.com:medikoo/my-screen.git
+[submodule "vendor/el-index"]
+	path = vendor/el-index
+	url = git@github.com:medikoo/el-index.git
