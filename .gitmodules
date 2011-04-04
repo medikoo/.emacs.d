@@ -6,7 +6,7 @@
 	url = git@github.com:medikoo/my-indent.git
 [submodule "vendor/my-screen"]
 	path = vendor/my-screen
-	url = git@github.com:medikoo/my-screen.git
+	url = git@github.com:medikoo/el-screen.git
 [submodule "vendor/el-index"]
 	path = vendor/el-index
 	url = git@github.com:medikoo/el-index.git
