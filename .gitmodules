@@ -1,9 +1,9 @@
 [submodule "vendor/el-kit"]
 	path = vendor/el-kit
 	url = git@github.com:medikoo/el-kit.git
-[submodule "vendor/my-indent"]
-	path = vendor/my-indent
-	url = git@github.com:medikoo/my-indent.git
+[submodule "vendor/el-indent"]
+	path = vendor/el-indent
+	url = git@github.com:medikoo/el-indent.git
 [submodule "vendor/el-screen"]
 	path = vendor/el-screen
 	url = git@github.com:medikoo/el-screen.git

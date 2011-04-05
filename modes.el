@@ -38,8 +38,8 @@
 (add-hook 'estarter-clojure-mode-hook 'estarter-coding-hook-run)
 (add-hook 'estarter-clojure-mode-hook 'estarter-paredit-mode)
 (add-hook 'estarter-clojure-mode-hook 'estarter-pretty-lambdas)
-(require 'my-indent/lisp)
-(add-hook 'estarter-clojure-mode-hook 'my-indent-set-lisp)
+(require 'el-indent/lisp)
+(add-hook 'estarter-clojure-mode-hook 'el-indent-set-lisp)
 
 ;; conf-mode
 (add-to-list 'auto-mode-alist '("/sites-\\(available\\|enabled\\)/" . conf-mode))
@@ -47,8 +47,8 @@
 (defvar estarter-conf-mode-hook nil
 	"Hook that gest run on activation of `conf-mode' but after file locals.")
 (add-hook 'estarter-conf-mode-hook 'estarter-coding-hook-run)
-(require 'my-indent/conf)
-(add-hook 'estarter-conf-mode-hook 'my-indent-set-conf)
+(require 'el-indent/conf)
+(add-hook 'estarter-conf-mode-hook 'el-indent-set-conf)
 
 ;; css-mode
 (defvar estarter-css-mode-hook nil
@@ -63,8 +63,8 @@
 (defvar estarter-dns-mode-hook nil
 	"Hook that gest run on activation of `dns-mode' but after file locals.")
 (add-hook 'estarter-dns-mode-hook 'estarter-coding-hook-run)
-(require 'my-indent/dns)
-(add-hook 'estarter-dns-mode-hook 'my-indent-set-dns)
+(require 'el-indent/dns)
+(add-hook 'estarter-dns-mode-hook 'el-indent-set-dns)
 
 ;; emacs-lisp mode
 (defvar estarter-emacs-lisp-mode-hook nil
@@ -72,8 +72,8 @@
 (add-hook 'estarter-emacs-lisp-mode-hook 'estarter-coding-hook-run)
 (add-hook 'estarter-emacs-lisp-mode-hook 'estarter-paredit-mode)
 (add-hook 'estarter-emacs-lisp-mode-hook 'estarter-pretty-lambdas)
-(require 'my-indent/lisp)
-(add-hook 'estarter-emacs-lisp-mode-hook 'my-indent-set-lisp)
+(require 'el-indent/lisp)
+(add-hook 'estarter-emacs-lisp-mode-hook 'el-indent-set-lisp)
 (add-hook 'estarter-emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'estarter-emacs-lisp-mode-hook 'estarter-remove-elc-on-save)
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
@@ -177,8 +177,8 @@
 (add-hook 'estarter-lisp-mode-hook 'estarter-coding-hook-run)
 (add-hook 'estarter-lisp-mode-hook 'estarter-paredit-mode)
 (add-hook 'estarter-lisp-mode-hook 'estarter-pretty-lambdas)
-(require 'my-indent/lisp)
-(add-hook 'estarter-lisp-mode-hook 'my-indent-set-lisp)
+(require 'el-indent/lisp)
+(add-hook 'estarter-lisp-mode-hook 'el-indent-set-lisp)
 
 ;; php-mode
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
@@ -209,5 +209,5 @@
 (add-hook 'estarter-scheme-mode-hook 'estarter-coding-hook-run)
 (add-hook 'estarter-scheme-mode-hook 'estarter-paredit-mode)
 (add-hook 'estarter-scheme-mode-hook 'estarter-pretty-lambdas)
-(require 'my-indent/lisp)
-(add-hook 'estarter-scheme-mode-hook 'my-indent-set-lisp)
+(require 'el-indent/lisp)
+(add-hook 'estarter-scheme-mode-hook 'el-indent-set-lisp)
