@@ -1,7 +1,7 @@
 ;; init.el --- Where everything begins
 ;;
-;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs@medikoo.com>
-;; Author: Mariusz Nowak <mariusz+emacs@medikoo.com>
+;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
+;; Author: Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
 ;; Inpired and initially based on Phil Hagelberg's Emacs Starter kit
 ;; https://github.com/technomancy/emacs-starter-kit
 
@@ -20,10 +20,7 @@
 
 ;;; Commentary
 ;;
-;; This setup is inspired by and have parts copied from Emacs Starter Kit:
-;; http://github.com/technomancy/emacs-starter-kit
-;;
-;; This is the first thing to get loaded.
+;; See README.
 
 ;; Configure interface
 (menu-bar-mode -1)
@@ -36,31 +33,31 @@
 (prefer-coding-system 'utf-8)
 
 ;; Set environment variables
-(setq my-dotfiles-dir (file-name-directory (or (buffer-file-name)
+(setq estarter-dotfiles-dir (file-name-directory (or (buffer-file-name)
 			load-file-name)))
-(setq my-elisp-dir (let ((path (symbol-file 'add-hook 'defun)))
+(setq estarter-elisp-dir (let ((path (symbol-file 'add-hook 'defun)))
 		(substring path 0 (+ 1 (string-match "/lisp/" path)))))
-(setq my-vendor-dir (concat my-dotfiles-dir "vendor/"))
-(setq my-vendor-user-dir (concat my-vendor-dir "user/"))
-(setq my-custom-file-default (concat my-dotfiles-dir "custom.el.default"))
-(setq custom-file (concat my-dotfiles-dir "custom.el"))
+(setq estarter-vendor-dir (concat estarter-dotfiles-dir "vendor/"))
+(setq estarter-vendor-user-dir (concat estarter-vendor-dir "user/"))
+(setq estarter-custom-file-default (concat estarter-dotfiles-dir "custom.el.default"))
+(setq custom-file (concat estarter-dotfiles-dir "custom.el"))
 (if (and (not (file-exists-p custom-file))
-		(file-exists-p my-custom-file-default))
-	(copy-file my-custom-file-default custom-file))
-(add-to-list 'load-path my-vendor-dir)
-(add-to-list 'load-path my-vendor-user-dir)
+		(file-exists-p estarter-custom-file-default))
+	(copy-file estarter-custom-file-default custom-file))
+(add-to-list 'load-path estarter-vendor-dir)
+(add-to-list 'load-path estarter-vendor-user-dir)
 
 ;; Compile when needed
-(defun my-recompile-all ()
+(defun estarter-recompile-all ()
 	(let ((noninteractive t))
-		(byte-recompile-directory my-dotfiles-dir 0)))
-(my-recompile-all)
-(add-hook 'kill-emacs-hook 'my-recompile-all)
+		(byte-recompile-directory estarter-dotfiles-dir 0)))
+(estarter-recompile-all)
+(add-hook 'kill-emacs-hook 'estarter-recompile-all)
 
 ;; Generate and load autoloads
 (require 'cl)
-(setq generated-autoload-file (concat my-dotfiles-dir "loaddefs.el"))
-(update-directory-autoloads my-vendor-dir my-vendor-user-dir)
+(setq generated-autoload-file (concat estarter-dotfiles-dir "loaddefs.el"))
+(update-directory-autoloads estarter-vendor-dir estarter-vendor-user-dir)
 (load generated-autoload-file)
 
 ;; Load needed modules (ones that won't go automatically through autoload)
@@ -77,15 +74,15 @@
 (show-paren-mode 1)
 (sml-modeline-mode)
 (color-theme-initialize)
-(if (and (not (file-exists-p (concat my-vendor-dir "snippets")))
-		(file-exists-p (concat my-vendor-dir "snippets.default")))
-	(my-directory-copy (concat my-vendor-dir "snippets.default")
-		(concat my-vendor-dir "snippets")))
+(if (and (not (file-exists-p (concat estarter-vendor-dir "snippets")))
+		(file-exists-p (concat estarter-vendor-dir "snippets.default")))
+	(el-kit-directory-copy (concat estarter-vendor-dir "snippets.default")
+		(concat estarter-vendor-dir "snippets")))
 (require 'yasnippet)
 (yas/initialize)
 
 ;; Fixes for broken or not working properly functions
-(load (concat my-dotfiles-dir "fix"))
+(load (concat estarter-dotfiles-dir "fix"))
 
 ;; Seed the random-number generator
 (random t)
@@ -94,35 +91,35 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Customize key bindings
-(load (concat my-dotfiles-dir "keys"))
+(load (concat estarter-dotfiles-dir "keys"))
 
 ;; Major Mode-specific customizations
-(load (concat my-dotfiles-dir "mode-helpers"))
-(load (concat my-dotfiles-dir "modes"))
+(load (concat estarter-dotfiles-dir "mode-helpers"))
+(load (concat estarter-dotfiles-dir "modes"))
 
 ;; System-specific customizations
-(load (concat my-dotfiles-dir (symbol-name system-type)) 'noerror)
+(load (concat estarter-dotfiles-dir (symbol-name system-type)) 'noerror)
 
 ;; Defaults
-(setq my-tab-width 2)
-(setq my-indent-tabs-mode t)
-(setq my-color-theme 'color-theme-my-charcoal-black)
-(setq my-frame-alpha 97)
+(setq estarter-tab-width 2)
+(setq estarter-indent-tabs-mode t)
+(setq estarter-color-theme 'color-theme-estarter-charcoal-black)
+(setq estarter-frame-alpha 97)
 
 ;; User-specific customizations
-(yas/load-directory (concat my-vendor-dir "snippets"))
-(load (concat my-dotfiles-dir "config.el") 'noerror)
+(yas/load-directory (concat estarter-vendor-dir "snippets"))
+(load (concat estarter-dotfiles-dir "config.el") 'noerror)
 (load custom-file 'noerror)
 
 ;; Load color theme
-(funcall my-color-theme)
+(funcall estarter-color-theme)
 ;; Emacs's win.el will override some face values
 ;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434
 ;; so we're loading it later again through `window-setup-hook'
-(add-hook 'window-setup-hook my-color-theme)
+(add-hook 'window-setup-hook estarter-color-theme)
 
 ;; Set frame alpha
-(modify-all-frames-parameters (list (cons 'alpha my-frame-alpha)))
+(modify-all-frames-parameters (list (cons 'alpha estarter-frame-alpha)))
 
 ;; Load screen manager
 (el-screen-init)

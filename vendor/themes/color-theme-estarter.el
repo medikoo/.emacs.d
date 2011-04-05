@@ -18,12 +18,12 @@
 
 ;; Copyright (C) 2003 Lars Chr. Hausmann
 ;; Copyright (C) 2010 Mariusz Nowak <mariusz+emacs@medikoo.com>
-(defun color-theme-my-charcoal-black ()
+(defun color-theme-estarter-charcoal-black ()
   "Color theme by Lars Chr. Hausmann, created 2003-03-24
   .. with modifications by Mariusz Nowak (2010)."
   (interactive)
   (color-theme-install
-    '(color-theme-my-charcoal-black
+    '(color-theme-estarter-charcoal-black
       ((background-color . "#181818")
         (background-mode . dark)
         (border-color . "Grey")

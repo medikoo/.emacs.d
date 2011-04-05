@@ -1,9 +1,7 @@
-;; mode-helpers.el --- Configuration functions for major mode hooks
+;; mode-helpers.el --- Custom functions used for major modes configuration
 ;;
-;; Copyright (C) 2008, 2009 Phil Hagelberg <technomacy@gmail.com>
-;; Copyright (C) 2010 Mariusz Nowak <mariusz+emacs@medikoo.com>
-;; Author: Phil Hagelberg <technomacy@gmail.com>
-;; Author: Mariusz Nowak <mariusz+emacs@medikoo.com>
+;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
+;; Author: Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -20,52 +18,52 @@
 
 ;;; Commentary
 ;;
-;; Configuration methods for major modes
+;; Custom functions used for major modes configuration
 
-(defvar my-coding-hook nil
+(defvar estarter-coding-hook nil
 	"Hook that gets run on activation of any programming mode.")
 
-(defun my-coding-hook-run ()
+(defun estarter-coding-hook-run ()
 	"Enable things that are convenient across all coding buffers."
-	(run-hooks 'my-coding-hook))
+	(run-hooks 'estarter-coding-hook))
 
-(defun my-column-number-mode ()
+(defun estarter-column-number-mode ()
 	"Turn on `column-number-mode'"
 	(column-number-mode t))
 
-(defun my-hl-line-mode ()
+(defun estarter-hl-line-mode ()
 	"Turn on `hl-line-mode'"
 	(hl-line-mode t))
 
-(defun my-whitespace-mode ()
+(defun estarter-whitespace-mode ()
 	"Turn on `whitespace-mode'"
 	(whitespace-mode -1)
 	(whitespace-mode 1))
 
-(defun my-reset-indent-tabs-mode ()
+(defun estarter-reset-indent-tabs-mode ()
 	"Reset `indent-tabs-mode' to its default.
 	Some modes force own setting, we may don't like that."
 	(kill-local-variable 'indent-tabs-mode))
 
-(defun my-reset-tab-width ()
+(defun estarter-reset-tab-width ()
 	"Reset `tab-width' to its default.
 	Some modes force own setting, we may don't like that."
 	(kill-local-variable 'tab-width))
 
 ;; Make sure dir locals are set after major mode change.
 ;; Load (my) major mode hooks afterwards.
-(defun my-after-change-major-mode ()
+(defun estarter-after-change-major-mode ()
 	(hack-local-variables)
-	(run-hooks (intern (concat "my-" (symbol-name major-mode) "-hook"))))
-(add-hook 'after-change-major-mode-hook 'my-after-change-major-mode)
+	(run-hooks (intern (concat "estarter-" (symbol-name major-mode) "-hook"))))
+(add-hook 'after-change-major-mode-hook 'estarter-after-change-major-mode)
 
-(defun my-paredit-mode ()
+(defun estarter-paredit-mode ()
 	"Turn on `paredit-mode'"
 	(paredit-mode 1))
 
 ;; Copyright (C) 2008, 2009, 2010 Phil Hagelberg <technomacy@gmail.com>
 ;; http://github.com/technomancy/emacs-starter-kit/blob/master/starter-kit-lisp.el
-(defun my-pretty-lambdas ()
+(defun estarter-pretty-lambdas ()
 	"Pretty lambdas for lisp modes."
 	(font-lock-add-keywords
 		nil `(("(?\\(lambda\\>\\)"
@@ -75,7 +73,7 @@
 
 ;; Copyright (C) 2008, 2009, 2010 Phil Hagelberg <technomacy@gmail.com>
 ;; http://github.com/technomancy/emacs-starter-kit/blob/master/starter-kit-lisp.el
-(defun my-remove-elc-on-save ()
+(defun estarter-remove-elc-on-save ()
 	"If you're saving an elisp file, likely the .elc is no longer valid."
 	(make-local-variable 'after-save-hook)
 	(add-hook 'after-save-hook
@@ -83,7 +81,7 @@
 			(if (file-exists-p (concat buffer-file-name "c"))
 				(delete-file (concat buffer-file-name "c"))))))
 
-(defun my-ftl-support ()
+(defun estarter-ftl-support ()
 	(interactive)
 	(if buffer-file-name
 			(if (string-equal (substring	buffer-file-name -4) ".ftl")

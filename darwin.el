@@ -1,7 +1,7 @@
-;; darwin.el --- Mac OSX general settings
+;; darwin.el --- Mac OSX custom settings
 ;;
-;; Author:	Mariusz Nowak <mariusz+emacs@medikoo.com>
-;; Copyright (C) 2010 Mariusz Nowak <mariusz+emacs@medikoo.com>
+;; Author:	Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
+;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -18,10 +18,10 @@
 
 ;;; Commentary
 ;;
-;; Key bindings when on Max OSX
+;; Key bindings when on Mac OSX
 
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
-(define-key my-keys-minor-mode-map (kbd "M-`") 'other-frame)
+(define-key estarter-keys-minor-mode-map (kbd "M-`") 'other-frame)

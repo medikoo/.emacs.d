@@ -1,6 +1,6 @@
-[submodule "vendor/my"]
-	path = vendor/my
-	url = git@github.com:medikoo/my-elisp.git
+[submodule "vendor/el-kit"]
+	path = vendor/el-kit
+	url = git@github.com:medikoo/el-kit.git
 [submodule "vendor/my-indent"]
 	path = vendor/my-indent
 	url = git@github.com:medikoo/my-indent.git

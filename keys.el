@@ -1,7 +1,7 @@
 ;; keys.el --- Custom key bindings for Emacs
 ;;
 ;; Author:	Mariusz Nowak <mariusz+emacs@medikoo.com>
-;; Copyright (C) 2010 Mariusz Nowak <mariusz+emacs@medikoo.com>
+;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs@medikoo.com>
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -18,45 +18,53 @@
 
 ;;; Commentary
 ;;
-;; Custom key bindings for emacs. To make sure they override other bindings
-;; we load them as minor-mode.
+;; Custom key bindings for emacs. To override other bindings we load them with
+;; minor-mode.
 
-(require 'my/buffer)
-(require 'my/file)
+(require 'el-kit/buffer)
+(require 'el-kit/file)
 
-(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
-;; Perform general cleanup.
+(defvar estarter-keys-minor-mode-map (make-keymap)
+	"estarter-keys-minor-mode keymap.")
 
-(define-key my-keys-minor-mode-map (kbd "C-c n")    'my-buffer-whitespace-cleanup)
-(define-key my-keys-minor-mode-map (kbd "C-c p")    'my-buffer-print-file-name)
-(define-key my-keys-minor-mode-map (kbd "C-w")      'backward-kill-word)
-(define-key my-keys-minor-mode-map (kbd "C-S-w")    'kill-word)
-(define-key my-keys-minor-mode-map (kbd "C-x C-k")  'kill-region)
-(define-key my-keys-minor-mode-map (kbd "<C-tab>")  'my-buffer-insert-tab-space)
-(define-key my-keys-minor-mode-map (kbd "C-x f")    'my-file-recent-ido)
-(define-key my-keys-minor-mode-map (kbd "C-c r")    'my-buffer-rename-file-or-buffer)
+(define-key estarter-keys-minor-mode-map (kbd "C-c n")
+	'el-kit-buffer-whitespace-cleanup)
+(define-key estarter-keys-minor-mode-map (kbd "C-c p")
+	'el-kit-buffer-print-file-name)
+(define-key estarter-keys-minor-mode-map (kbd "C-w")
+	'backward-kill-word)
+(define-key estarter-keys-minor-mode-map (kbd "C-S-w")
+	'kill-word)
+(define-key estarter-keys-minor-mode-map (kbd "C-x C-k")
+	'kill-region)
+(define-key estarter-keys-minor-mode-map (kbd "<C-tab>")
+	'el-kit-buffer-insert-tab-space)
+(define-key estarter-keys-minor-mode-map (kbd "C-x f")
+	'el-kit-file-recent-ido)
+(define-key estarter-keys-minor-mode-map (kbd "C-c r")
+	'el-kit-buffer-rename-file-or-buffer)
 
 ;; Help should search more than just commands
-(define-key my-keys-minor-mode-map (kbd "C-h a") 'apropos)
+(define-key estarter-keys-minor-mode-map (kbd "C-h a") 'apropos)
 
-(define-minor-mode my-keys-minor-mode
+(define-minor-mode estarter-keys-minor-mode
 	"A minor mode that overrides specified key settings (in all major modes)."
-	t " my-keys" 'my-keys-minor-mode-map)
+	t " estarter-keys" 'estarter-keys-minor-mode-map)
 
-(my-keys-minor-mode 1)
+(estarter-keys-minor-mode 1)
 
-(defun my-keys-minor-mode-off ()
-	(my-keys-minor-mode 0))
+(defun estarter-keys-minor-mode-off ()
+	(estarter-keys-minor-mode 0))
 
-(add-hook 'minibuffer-setup-hook 'my-keys-minor-mode-off)
+(add-hook 'minibuffer-setup-hook 'estarter-keys-minor-mode-off)
 
-(defun my-keys-prority ()
-	(if (not (eq (car (car minor-mode-map-alist)) 'my-keys-minor-mode))
+(defun estarter-keys-prority ()
+	(if (not (eq (car (car minor-mode-map-alist)) 'estarter-keys-minor-mode))
 		(let (gotit x)
 			(progn
 				(setq gotit nil)
 				(dolist (x minor-mode-map-alist)
-					(if (eq (car x) 'my-keys-minor-mode)
+					(if (eq (car x) 'estarter-keys-minor-mode)
 						(setq gotit x)))
 				(if gotit
 					(progn
@@ -64,4 +72,4 @@
 						(setq minor-mode-map-alist
 							(cons gotit minor-mode-map-alist))))))))
 
-(add-hook 'after-change-major-mode-hook 'my-keys-prority)
+(add-hook 'after-change-major-mode-hook 'estarter-keys-prority)
