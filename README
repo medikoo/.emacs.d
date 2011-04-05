@@ -1,4 +1,4 @@
-emacs-starter --- Neat emacs initialization script for newcomer
+emacs-starter --- Neat emacs initialization setup for newcomer
 
 -------------------------------------------------------------------------------
 1. About
@@ -10,15 +10,15 @@ http://github.com/technomancy/emacs-starter-kit
 If you want to try Emacs, start with this article ->
 http://sites.google.com/site/steveyegge2/effective-emacs
 Browse and have handy:
-Emacs Lisp (language in which you customize Emacs) manual ->
+Emacs Lisp manual (language in which you customize Emacs) ->
 http://www.gnu.org/software/emacs/manual/html_mono/elisp.html
 Emacs Editor manual ->
 http://www.gnu.org/software/emacs/manual/html_mono/emacs.html
 
 Read the code to see what this initialization script does.
 
-Script assumes that user sets his own settings by changing Emacs custom
-variables and by setting other within config.el file.
+Configuration assumes that user sets his own settings via Emacs custom
+variables and others within config.el file.
 Additional custom modules should land in vendor/user folder.
 
 -------------------------------------------------------------------------------
