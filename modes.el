@@ -27,10 +27,11 @@
 (add-hook 'estarter-coding-hook 'estarter-whitespace-mode)
 
 ;; Emacs lisp source specific customizations
-(dir-locals-set-class-variables 'elisp
-	'((emacs-lisp-mode . ((indent-tabs-mode . nil)))))
-(dir-locals-set-directory-class
-	estarter-elisp-dir 'elisp)
+(when (fboundp 'dir-locals-set-class-variables)
+	(dir-locals-set-class-variables 'elisp
+		'((emacs-lisp-mode . ((indent-tabs-mode . nil)))))
+	(dir-locals-set-directory-class
+		estarter-elisp-dir 'elisp))
 
 ;; clojure-mode
 (defvar estarter-clojure-mode-hook nil
