@@ -20,6 +20,7 @@
  '(indent-tabs-mode estarter-indent-tabs-mode)
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
+ '(initial-major-mode (quote emacs-lisp-mode))
  '(js2-basic-offset estarter-tab-width)
  '(js2-highlight-level 3)
  '(js2-mirror-mode nil)
