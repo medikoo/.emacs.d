@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Λ.log(..)
+# --
+`(let ((name (estarter-custom-js-get-global)))
+    (if name
+      (concat name ".log.")
+      "console."))`debug($1);
