@@ -9,6 +9,7 @@
 		(list (list ".*" (concat estarter-dotfiles-dir "auto-save-list/") t)))
 	'(backup-directory-alist
 		(list (cons "." (concat estarter-dotfiles-dir "backups/"))))
+	'(backward-delete-char-untabify-method nil)
 	'(bookmark-default-file (concat estarter-dotfiles-dir ".emacs.bmk"))
 	'(css-indent-offset estarter-tab-width)
 	'(delete-by-moving-to-trash t)
