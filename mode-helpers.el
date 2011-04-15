@@ -88,7 +88,6 @@
 		(if (string-equal (substring	buffer-file-name -4) ".ftl")
 			(ftl-mode 1))))
 
-
 (defvar estarter-yas/expand-prevent nil
 	"Whether to prevent snippet expansion.")
 
