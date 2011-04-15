@@ -25,6 +25,9 @@
 (add-hook 'estarter-coding-hook 'estarter-column-number-mode)
 (add-hook 'estarter-coding-hook 'estarter-hl-line-mode)
 (add-hook 'estarter-coding-hook 'estarter-whitespace-mode)
+;; Expand snippets only after character input
+(define-key yas/minor-mode-map (read-kbd-macro yas/trigger-key) 'estarter-yas/expand)
+
 
 ;; Emacs lisp source specific customizations
 (when (fboundp 'dir-locals-set-class-variables)
