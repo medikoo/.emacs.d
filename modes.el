@@ -183,6 +183,7 @@
 (add-hook 'estarter-lisp-mode-hook 'estarter-pretty-lambdas)
 (require 'el-indent/lisp)
 (add-hook 'estarter-lisp-mode-hook 'el-indent-set-lisp)
+(ad-activate 'indent-sexp)
 
 ;; php-mode
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))

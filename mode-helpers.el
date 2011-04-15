@@ -103,3 +103,12 @@
 	"Do not return snippets table if prevent expansion is on."
 	(unless estarter-yas/expand-prevent
 		ad-do-it))
+
+(defadvice indent-sexp (around use-indent-line-function
+		(&optional endpos))
+	"Force `indent-sexp' to use `indent-line-function'."
+	(let ((startpos (point)))
+		(save-excursion
+			(unless endpos
+				(forward-list))
+			(indent-region startpos (or endpos (point))))))
