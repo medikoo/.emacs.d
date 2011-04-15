@@ -82,45 +82,24 @@
 				(delete-file (concat buffer-file-name "c"))))))
 
 (defun estarter-ftl-support ()
+	"`ftl-mode' for *.ftl files."
 	(interactive)
 	(if buffer-file-name
 		(if (string-equal (substring	buffer-file-name -4) ".ftl")
 			(ftl-mode 1))))
 
-(defun estarter-yas/expand ()
-	"Prevent yasnippet expansion after other command than `self-insert-command'"
-	(interactive)
-	(if (eq last-command 'self-insert-command)
-		(yas/expand)
 
-		;;; Copied from `yas/expand-1'
-		(cond ((eq yas/fallback-behavior 'return-nil)
-				;; return nil
-				nil)
-			((eq yas/fallback-behavior 'call-other-command)
-				(let* ((yas/minor-mode nil)
-						(keys-1 (this-command-keys-vector))
-						(keys-2 (and yas/trigger-key
-								(stringp yas/trigger-key)
-								(read-kbd-macro yas/trigger-key)))
-						(command-1 (and keys-1 (key-binding keys-1)))
-						(command-2 (and keys-2 (key-binding keys-2)))
-						(command (or (and (not (eq command-1 'yas/expand))
-									command-1)
-								command-2)))
-					(when (and (commandp command)
-							(not (eq 'yas/expand command)))
-						(setq this-command command)
-						(call-interactively command))))
-			((and (listp yas/fallback-behavior)
-					(cdr yas/fallback-behavior)
-					(eq 'apply (car yas/fallback-behavior)))
-				(if (cddr yas/fallback-behavior)
-					(apply (cadr yas/fallback-behavior)
-						(cddr yas/fallback-behavior))
-					(when (commandp (cadr yas/fallback-behavior))
-						(setq this-command (cadr yas/fallback-behavior))
-						(call-interactively (cadr yas/fallback-behavior)))))
-			(t
-				;; also return nil if all the other fallbacks have failed
-				nil))))
+(defvar estarter-yas/expand-prevent nil
+	"Whether to prevent snippet expansion.")
+
+(defadvice yas/expand (around only-on-self-insert)
+	"Prevent snippet expansion on other command than `self-insert-command'."
+	(unless (eq last-command 'self-insert-command)
+		(setq estarter-yas/expand-prevent t))
+	ad-do-it
+	(setq estarter-yas/expand-prevent nil))
+
+(defadvice yas/get-snippet-tables (around only-on-self-insert)
+	"Do not return snippets table if prevent expansion is on."
+	(unless estarter-yas/expand-prevent
+		ad-do-it))
