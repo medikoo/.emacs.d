@@ -173,7 +173,6 @@
 				(when (eolp)
 					(insert quote-string)
 					(backward-char 1))))
-
 ))
 
 ;; lisp-mode
