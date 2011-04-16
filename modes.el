@@ -29,6 +29,10 @@
 (define-key yas/minor-mode-map (read-kbd-macro yas/trigger-key) 'estarter-yas/expand)
 
 
+;; Expand snippets only after character input
+(ad-activate 'yas/get-snippet-tables)
+(ad-activate 'yas/expand)
+
 ;; Emacs lisp source specific customizations
 (when (fboundp 'dir-locals-set-class-variables)
 	(dir-locals-set-class-variables 'elisp
@@ -172,7 +176,6 @@
 				(when (eolp)
 					(insert quote-string)
 					(backward-char 1))))
-
 ))
 
 ;; lisp-mode
@@ -183,6 +186,7 @@
 (add-hook 'estarter-lisp-mode-hook 'estarter-pretty-lambdas)
 (require 'el-indent/lisp)
 (add-hook 'estarter-lisp-mode-hook 'el-indent-set-lisp)
+(ad-activate 'indent-sexp)
 
 ;; php-mode
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
