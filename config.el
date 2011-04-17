@@ -5,3 +5,8 @@
 
 (push "/usr/local/git/bin" exec-path)
 (require 'el-kit/html)
+
+(let ((path "~/Documents/org/"))
+	(when (file-exists-p path)
+		(require 'el-fast-filelist/el-fast-filelist)
+		(el-fast-filelist path (kbd "C-;"))))
