@@ -14,4 +14,4 @@
                 (search-backward name nil t 1)
                 (search-forward name nil t 1))
               name)) estarter-custom-js-globals)
-        (car (last estarter-custom-js-globals))))))
+        nil))))
