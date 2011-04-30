@@ -44,6 +44,16 @@
 (define-key estarter-keys-minor-mode-map (kbd "C-c r")
 	'el-kit-buffer-rename-file-or-buffer)
 
+;; Windmove should override major mode bindings
+(define-key estarter-keys-minor-mode-map (vector (list 'shift 'left))
+	'windmove-left)
+(define-key estarter-keys-minor-mode-map (vector (list 'shift 'right))
+	'windmove-right)
+(define-key estarter-keys-minor-mode-map (vector (list 'shift 'up))
+	'windmove-up)
+(define-key estarter-keys-minor-mode-map (vector (list 'shift 'down))
+	'windmove-down)
+
 ;; Help should search more than just commands
 (define-key estarter-keys-minor-mode-map (kbd "C-h a") 'apropos)
 
