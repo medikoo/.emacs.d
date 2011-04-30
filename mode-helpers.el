@@ -111,3 +111,22 @@
 			(unless endpos
 				(forward-list))
 			(indent-region startpos (or endpos (point))))))
+
+(defvar js2-buffer-file-name nil
+"`js2-mode' methods sets `buffer-file-name' to nil for internal processing.
+	However we need that value to detect whether we're in JSON file.
+	Before it is cleared we save `buffer-file-name' under this name.")
+
+(defadvice js2-reparse (before json)
+	"Update `js2-buffer-file-name'."
+	(setq js2-buffer-file-name buffer-file-name))
+
+(defadvice js2-parse-statement (around json)
+	"Parse JSON file differently.
+	Use `js2-parse-assign-expr' if within and at begin of JSON file."
+	(if (and (= tt js2-LC)
+			js2-buffer-file-name
+			(string-equal (substring js2-buffer-file-name -5) ".json")
+			(eq (+ (el-kit-buffer-first-nonwhitespace-pos) 1) js2-ts-cursor))
+		(setq ad-return-value (js2-parse-assign-expr))
+		ad-do-it))
