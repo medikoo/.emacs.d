@@ -80,7 +80,6 @@
 		(concat estarter-vendor-dir "snippets")))
 (require 'yasnippet)
 (yas/initialize)
-(windmove-default-keybindings)
 
 ;; Fixes for broken or not working properly functions
 (load (concat estarter-dotfiles-dir "fix"))
