@@ -113,7 +113,7 @@
 			(indent-region startpos (or endpos (point))))))
 
 (defvar js2-buffer-file-name nil
-"`js2-mode' methods sets `buffer-file-name' to nil for internal processing.
+	"`js2-mode' methods sets `buffer-file-name' to nil for internal processing.
 	However we need that value to detect whether we're in JSON file.
 	Before it is cleared we save `buffer-file-name' under this name.")
 
@@ -130,3 +130,49 @@
 			(eq (+ (el-kit-buffer-first-nonwhitespace-pos) 1) js2-ts-cursor))
 		(setq ad-return-value (js2-parse-assign-expr))
 		ad-do-it))
+
+(defadvice js-proper-indentation (around fix-indent
+		(parse-status))
+	"Return the proper indentation for the current line."
+	(setq ad-return-value (save-excursion
+			(back-to-indentation)
+			(let ((ctrl-stmt-indent (js-ctrl-statement-indentation))
+					(same-indent-p (looking-at "[]})]\\|\\<case\\>\\|\\<default\\>"))
+					(continued-expr-p (js-continued-expression-p))
+					(bracket (nth 1 parse-status))
+					beg)
+				(cond
+					;; indent array comprehension continuation lines specially
+					((and bracket
+							(not (js2-same-line bracket))
+							(setq beg (js2-indent-in-array-comp parse-status))
+							(>= (point) (save-excursion
+									(goto-char beg)
+									(point-at-bol)))) ; at or after first loop?
+						(js2-array-comp-indentation parse-status beg))
+					(ctrl-stmt-indent)
+
+					(bracket
+						(goto-char bracket)
+						(cond
+							((looking-at "[({[][ \t]*\\(/[/*]\\|$\\)")
+								(let ((p (parse-partial-sexp (point-at-bol) (point))))
+									(when (save-excursion (skip-chars-backward " \t)")
+											(looking-at ")"))
+										(backward-list))
+									(back-to-indentation)
+									(cond (same-indent-p
+											(current-column))
+										(continued-expr-p
+											(+ (current-column) (* 2 js2-basic-offset)))
+										(t
+											(+ (current-column) js2-basic-offset)))))
+							(t
+								(back-to-indentation)
+								(unless same-indent-p
+									(forward-char js2-basic-offset)
+									(skip-chars-forward " \t"))
+								(current-column))))
+
+					(continued-expr-p js2-basic-offset)
+					(t 0))))))
