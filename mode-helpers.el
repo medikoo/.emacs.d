@@ -28,17 +28,21 @@
 	(run-hooks 'estarter-coding-hook))
 
 (defun estarter-column-number-mode ()
-	"Turn on `column-number-mode'"
+	"Turn on `column-number-mode'."
 	(column-number-mode t))
 
 (defun estarter-hl-line-mode ()
-	"Turn on `hl-line-mode'"
+	"Turn on `hl-line-mode'."
 	(hl-line-mode t))
 
 (defun estarter-whitespace-mode ()
-	"Turn on `whitespace-mode'"
+	"Turn on `whitespace-mode'."
 	(whitespace-mode -1)
 	(whitespace-mode 1))
+
+(defun estarter-show-point-mode ()
+	"Turn on `show-point-mode'."
+	(show-point-mode t))
 
 (defun estarter-reset-indent-tabs-mode ()
 	"Reset `indent-tabs-mode' to its default.
@@ -51,7 +55,7 @@
 	(kill-local-variable 'tab-width))
 
 ;; Make sure dir locals are set after major mode change.
-;; Load (my) major mode hooks afterwards.
+;; Load estarter major mode hooks afterwards.
 (defun estarter-after-change-major-mode ()
 	(hack-local-variables)
 	(run-hooks (intern (concat "estarter-" (symbol-name major-mode) "-hook"))))
@@ -130,6 +134,12 @@
 			(eq (+ (el-kit-buffer-first-nonwhitespace-pos) 1) js2-ts-cursor))
 		(setq ad-return-value (js2-parse-assign-expr))
 		ad-do-it))
+
+(defadvice js2-mode (after run-estarter-mode-hooks)
+	"`js2-mode' is not build with `define-derived-mode',
+	in consequence it does not run `after-change-major-mode-hook'.
+	This advice makes sure it gets run."
+	(estarter-after-change-major-mode))
 
 (defadvice js-proper-indentation (around fix-indent
 		(parse-status))

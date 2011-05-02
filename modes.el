@@ -25,6 +25,7 @@
 (add-hook 'estarter-coding-hook 'estarter-column-number-mode)
 (add-hook 'estarter-coding-hook 'estarter-hl-line-mode)
 (add-hook 'estarter-coding-hook 'estarter-whitespace-mode)
+(add-hook 'estarter-coding-hook 'estarter-show-point-mode)
 
 ;; Expand snippets only after character input
 (ad-activate 'yas/get-snippet-tables)
@@ -102,6 +103,7 @@
 (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-hook 'estarter-js2-mode-hook 'estarter-coding-hook-run)
+(ad-activate 'js2-mode)
 (ad-activate 'js2-reparse)
 (ad-activate 'js2-parse-statement)
 (ad-activate 'js-proper-indentation)
