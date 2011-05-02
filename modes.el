@@ -25,6 +25,7 @@
 (add-hook 'estarter-coding-hook 'estarter-column-number-mode)
 (add-hook 'estarter-coding-hook 'estarter-hl-line-mode)
 (add-hook 'estarter-coding-hook 'estarter-whitespace-mode)
+(add-hook 'estarter-coding-hook 'estarter-show-point-mode)
 
 ;; Expand snippets only after character input
 (ad-activate 'yas/get-snippet-tables)

@@ -28,17 +28,21 @@
 	(run-hooks 'estarter-coding-hook))
 
 (defun estarter-column-number-mode ()
-	"Turn on `column-number-mode'"
+	"Turn on `column-number-mode'."
 	(column-number-mode t))
 
 (defun estarter-hl-line-mode ()
-	"Turn on `hl-line-mode'"
+	"Turn on `hl-line-mode'."
 	(hl-line-mode t))
 
 (defun estarter-whitespace-mode ()
-	"Turn on `whitespace-mode'"
+	"Turn on `whitespace-mode'."
 	(whitespace-mode -1)
 	(whitespace-mode 1))
+
+(defun estarter-show-point-mode ()
+	"Turn on `show-point-mode'."
+	(show-point-mode t))
 
 (defun estarter-reset-indent-tabs-mode ()
 	"Reset `indent-tabs-mode' to its default.
