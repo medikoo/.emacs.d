@@ -33,13 +33,24 @@
 (prefer-coding-system 'utf-8)
 
 ;; Set environment variables
-(setq estarter-dotfiles-dir (file-name-directory (or (buffer-file-name)
-			load-file-name)))
-(setq estarter-elisp-dir (let ((path (symbol-file 'add-hook 'defun)))
-		(substring path 0 (+ 1 (string-match "/lisp/" path)))))
-(setq estarter-vendor-dir (concat estarter-dotfiles-dir "vendor/"))
-(setq estarter-vendor-user-dir (concat estarter-vendor-dir "user/"))
-(setq estarter-custom-file-default (concat estarter-dotfiles-dir "custom.el.default"))
+(defconst estarter-dotfiles-dir (file-name-directory (or (buffer-file-name)
+			load-file-name))
+	"Path to your .emacs.d folder.")
+
+(defconst estarter-elisp-dir (let ((path (symbol-file 'add-hook 'defun)))
+		(substring path 0 (+ 1 (string-match "/lisp/" path))))
+	"Path to Emacs lisp files folder.")
+
+(defconst estarter-vendor-dir (concat estarter-dotfiles-dir "vendor/")
+	"Path to external modules folder.")
+
+(defconst estarter-vendor-user-dir (concat estarter-vendor-dir "user/")
+	"Path to user added external modules folder.")
+
+(defconst estarter-custom-file-default
+	(concat estarter-dotfiles-dir "custom.el.default")
+	"Path to default custom.el file")
+
 (setq custom-file (concat estarter-dotfiles-dir "custom.el"))
 (if (and (not (file-exists-p custom-file))
 		(file-exists-p estarter-custom-file-default))
@@ -101,10 +112,17 @@
 (load (concat estarter-dotfiles-dir (symbol-name system-type)) 'noerror)
 
 ;; Defaults
-(setq estarter-tab-width 2)
-(setq estarter-indent-tabs-mode t)
-(setq estarter-color-theme 'color-theme-estarter-charcoal-black)
-(setq estarter-frame-alpha 97)
+(defvar estarter-tab-width 2
+	"Default tab width.")
+
+(defvar estarter-indent-tabs-mode t
+	"Indent with tabs ?")
+
+(defvar estarter-color-theme 'color-theme-estarter-charcoal-black
+	"Default color-theme.")
+
+(defvar estarter-frame-alpha 97
+	"Default frame-alpha setting.")
 
 ;; User-specific customizations
 (yas/load-directory (concat estarter-vendor-dir "snippets"))
