@@ -118,6 +118,11 @@
 (add-hook 'estarter-lisp-mode-hook 'el-indent-set-lisp)
 (ad-activate 'indent-sexp)
 
+;; nxml-mode
+(defvar estarter-nxml-mode-hook nil
+	"Hook that gest run on activation of `nxml-mode' but after file locals.")
+(add-hook 'estarter-nxml-mode-hook 'estarter-coding-hook-run)
+
 ;; php-mode
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (defvar estarter-php-mode-hook nil
