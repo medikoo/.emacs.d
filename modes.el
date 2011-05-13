@@ -25,7 +25,6 @@
 (add-hook 'estarter-coding-hook 'estarter-column-number-mode)
 (add-hook 'estarter-coding-hook 'estarter-hl-line-mode)
 (add-hook 'estarter-coding-hook 'estarter-whitespace-mode)
-(add-hook 'estarter-coding-hook 'estarter-show-point-mode)
 
 ;; Expand snippets only after character input
 (ad-activate 'yas/get-snippet-tables)
@@ -82,6 +81,7 @@
 (add-hook 'estarter-emacs-lisp-mode-hook 'el-indent-set-lisp)
 (add-hook 'estarter-emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'estarter-emacs-lisp-mode-hook 'estarter-remove-elc-on-save)
+(add-hook 'estarter-emacs-lisp-mode-hook 'estarter-show-point-mode)
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
 
 ;; haml-mode
@@ -117,6 +117,11 @@
 (require 'el-indent/lisp)
 (add-hook 'estarter-lisp-mode-hook 'el-indent-set-lisp)
 (ad-activate 'indent-sexp)
+
+;; nxml-mode
+(defvar estarter-nxml-mode-hook nil
+	"Hook that gest run on activation of `nxml-mode' but after file locals.")
+(add-hook 'estarter-nxml-mode-hook 'estarter-coding-hook-run)
 
 ;; php-mode
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
