@@ -112,17 +112,31 @@
 (load (concat estarter-dotfiles-dir (symbol-name system-type)) 'noerror)
 
 ;; Defaults
-(defvar estarter-tab-width 2
-	"Default tab width.")
+(defgroup estarter nil "estarter -- initializaton setup")
 
-(defvar estarter-indent-tabs-mode t
-	"Indent with tabs ?")
+(defcustom estarter-tab-width 2
+	"Default tab width."
+	:tag "Default tab width"
+	:type 'integer
+	:group 'estarter)
 
-(defvar estarter-color-theme 'color-theme-estarter-charcoal-black
-	"Default color-theme.")
+(defcustom estarter-indent-tabs-mode t
+	"Indent with tabs ?"
+	:tag "Indent with tabs ?"
+	:type 'boolean
+	:group 'estarter)
 
-(defvar estarter-frame-alpha 97
-	"Default frame-alpha setting.")
+(defcustom estarter-color-theme 'color-theme-estarter-charcoal-black
+	"Default color-theme."
+	:tag "Default color-theme"
+	:type '(string :size 64)
+	:group 'estarter)
+
+(defcustom estarter-frame-alpha 97
+	"Default frame-alpha setting."
+	:tag "Default frame-alpja setting"
+	:type 'integer
+	:group 'estarter)
 
 ;; User-specific customizations
 (yas/load-directory (concat estarter-vendor-dir "snippets"))
