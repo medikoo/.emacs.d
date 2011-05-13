@@ -36,6 +36,7 @@
 	'(ruby-indent-tabs-mode estarter-indent-tabs-mode)
 	'(ruby-insert-encoding-magic-comment nil)
 	(list 'save-place-file (concat estarter-dotfiles-dir "places"))
+	'(safe-local-variable-values (quote ((js2-basic-offset . 4) (js2-basic-offset . 2) (js2-basic-offset . 8))))
 	'(save-place t nil (saveplace))
 	'(shift-select-mode nil)
 	'(tab-stop-list (let ((list (list estarter-tab-width)))
