@@ -92,6 +92,14 @@
 		(if (string-equal (substring	buffer-file-name -4) ".ftl")
 			(ftl-mode 1))))
 
+(defun estarter-indent-whitespace ()
+	(if indent-tabs-mode
+		"	"
+		(let ((w ""))
+			(dotimes (i (symbol-value estarter-tab-width-name))
+				(setq w (concat w " ")))
+			w)))
+
 (defvar estarter-yas/expand-prevent nil
 	"Whether to prevent snippet expansion.")
 
@@ -186,3 +194,7 @@
 
 					(continued-expr-p js2-basic-offset)
 					(t 0))))))
+
+(defun estarter-js2-tab-width-name ()
+	"Set js2-mode tab-width variable name"
+	(setq estarter-tab-width-name 'js2-basic-offset))

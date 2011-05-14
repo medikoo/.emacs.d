@@ -119,6 +119,8 @@
 	:tag "Default tab width"
 	:type 'integer
 	:group 'estarter)
+(setq estarter-tab-width-name 'estarter-tab-width)
+(make-variable-buffer-local 'estarter-tab-width-name)
 
 (defcustom estarter-indent-tabs-mode t
 	"Indent with tabs ?"
