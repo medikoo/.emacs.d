@@ -195,6 +195,12 @@
 					(continued-expr-p js2-basic-offset)
 					(t 0))))))
 
+(defadvice js2-indent-line (after vars)
+	(if (save-excursion
+			(back-to-indentation)
+			(if (looking-at ",")
+				(insert "  ")))))
+
 (defun estarter-js2-tab-width-name ()
 	"Set js2-mode tab-width variable name"
 	(setq estarter-tab-width-name 'js2-basic-offset))
