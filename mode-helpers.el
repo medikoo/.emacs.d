@@ -196,6 +196,7 @@
 					(t 0))))))
 
 (defadvice js2-indent-line (after vars)
+	"Correct indentation for coma separated var values."
 	(if (save-excursion
 			(back-to-indentation)
 			(if (looking-at ",")
