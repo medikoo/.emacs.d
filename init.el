@@ -77,6 +77,7 @@
 (require 'show-point-mode)
 (require 'saveplace)
 (require 'el-screen/el-screen)
+(require 'markdown-mode)
 
 ;; Turn on helpful modes
 (blink-cursor-mode 1)
