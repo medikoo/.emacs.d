@@ -120,6 +120,12 @@
 (add-hook 'estarter-lisp-mode-hook 'el-indent-set-lisp)
 (ad-activate 'indent-sexp)
 
+;; markdown-mode
+(defvar estarter-markdown-mode-hook nil
+	"Hook that gest run on activation of `markdown-mode' but after file locals.")
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+(add-hook 'estarter-markdown-mode-hook 'estarter-coding-hook-run)
+
 ;; nxml-mode
 (defvar estarter-nxml-mode-hook nil
 	"Hook that gest run on activation of `nxml-mode' but after file locals.")
