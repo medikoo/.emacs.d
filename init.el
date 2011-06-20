@@ -142,6 +142,7 @@
 	:group 'estarter)
 
 ;; User-specific customizations
+(global-unset-key (kbd "C-x C-z"))
 (yas/load-directory (concat estarter-vendor-dir "snippets"))
 (load (concat estarter-dotfiles-dir "config.el") 'noerror)
 (load custom-file 'noerror)
