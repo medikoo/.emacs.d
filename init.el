@@ -130,9 +130,20 @@
 	:group 'estarter)
 
 ;; User-specific customizations
+
+;; Remove annoying keybindings
+;; Hides/minimizes Emacs
 (global-unset-key (kbd "C-x C-z"))
+;; Displays warning confirm box for downcase-region command
+(global-unset-key (kbd "C-x C-l"))
+
+;; Load Snippets
 (yas/load-directory (concat estarter-vendor-dir "snippets"))
+
+;; Load user config file (if it exists)
 (load (concat estarter-dotfiles-dir "config.el") 'noerror)
+
+;; Load user custom settings
 (load custom-file 'noerror)
 
 ;; Load color theme
