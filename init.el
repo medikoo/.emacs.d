@@ -88,7 +88,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Load extra functions
-(load (concat esterter-dotfiles-dir "defun"))
+(load (concat estarter-dotfiles-dir "defun"))
 
 ;; Customize key bindings
 (load (concat estarter-dotfiles-dir "keys"))
