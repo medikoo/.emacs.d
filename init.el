@@ -44,19 +44,8 @@
 (defconst estarter-vendor-dir (concat estarter-dotfiles-dir "vendor/")
 	"Path to external modules folder.")
 
-(defconst estarter-vendor-user-dir (concat estarter-vendor-dir "user/")
-	"Path to user added external modules folder.")
-
-(defconst estarter-custom-file-default
-	(concat estarter-dotfiles-dir "custom.el.default")
-	"Path to default custom.el file")
-
 (setq custom-file (concat estarter-dotfiles-dir "custom.el"))
-(if (and (not (file-exists-p custom-file))
-		(file-exists-p estarter-custom-file-default))
-	(copy-file estarter-custom-file-default custom-file))
 (add-to-list 'load-path estarter-vendor-dir)
-(add-to-list 'load-path estarter-vendor-user-dir)
 
 ;; Compile when needed
 (defun estarter-recompile-all ()
@@ -68,7 +57,7 @@
 ;; Generate and load autoloads
 (require 'cl)
 (setq generated-autoload-file (concat estarter-dotfiles-dir "loaddefs.el"))
-(update-directory-autoloads estarter-vendor-dir estarter-vendor-user-dir)
+(update-directory-autoloads estarter-vendor-dir)
 (load generated-autoload-file)
 
 ;; Load needed modules (ones that won't go automatically through autoload)
@@ -86,10 +75,6 @@
 (show-paren-mode 1)
 (sml-modeline-mode)
 (color-theme-initialize)
-(if (and (not (file-exists-p (concat estarter-vendor-dir "snippets")))
-		(file-exists-p (concat estarter-vendor-dir "snippets.default")))
-	(el-kit-directory-copy (concat estarter-vendor-dir "snippets.default")
-		(concat estarter-vendor-dir "snippets")))
 (require 'yasnippet)
 (yas/initialize)
 
