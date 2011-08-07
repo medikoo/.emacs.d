@@ -205,3 +205,25 @@
 (defun estarter-js2-tab-width-name ()
 	"Set js2-mode tab-width variable name"
 	(setq estarter-tab-width-name 'js2-basic-offset))
+
+(require 'vc-dir)
+(defun vc-dir-revert-buffer-function (&optional ignore-auto noconfirm)
+	"Real refresh for vc-dir buffers (works as reload)."
+	(goto-char 0)
+	(let*
+		((index (search-forward "Working dir: " nil t))
+			(path (if index  (buffer-substring-no-properties index (- (search-forward "\n" nil t) 1))))
+			(window (selected-window))
+			backend buffer)
+		(when path
+			(kill-buffer (current-buffer))
+			(setq backend (vc-responsible-backend path))
+			(setq buffer (get-buffer (vc-dir-prepare-status-buffer "*vc-dir*" path backend)))
+			(set-buffer buffer)
+			(set-window-buffer window buffer)
+			(if (derived-mode-p 'vc-dir-mode)
+				(vc-dir-refresh)
+				;; FIXME: find a better way to pass the backend to `vc-dir-mode'.
+				(let ((use-vc-backend backend))
+					(vc-dir-mode)))
+)))
