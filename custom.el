@@ -1,4 +1,3 @@
-; -*-Emacs-Lisp-*-
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -8,7 +7,7 @@
  '(auto-save-file-name-transforms (list (list ".*" (concat estarter-dotfiles-dir "auto-save-list/") t)))
  '(backup-directory-alist (list (cons "." (concat estarter-dotfiles-dir "backups/"))))
  '(backward-delete-char-untabify-method nil)
- '(bookmark-default-file "~/.emacs.d/.emacs.bmk")
+ '(bookmark-default-file (concat estarter-dotfiles-dir ".emacs.bmk"))
  '(css-indent-offset estarter-tab-width)
  '(delete-by-moving-to-trash t)
  '(echo-keystrokes 0.1)
@@ -36,7 +35,7 @@
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values (quote ((js2-basic-offset . 4) (js2-basic-offset . 2) (js2-basic-offset . 8) (js2-strict-missing-semi-warning) (js2-strict-missing-semi-warning . t))))
  '(save-place t nil (saveplace))
- '(save-place-file "/Users/medikoo/.emacs.d/places")
+ '(save-place-file (concat estarter-dotfiles-dir "places"))
  '(shift-select-mode nil)
  '(tab-stop-list (let ((list (list estarter-tab-width))) (while (< (car (last list)) 200) (nconc list (list (+ estarter-tab-width (car (last list)))))) list))
  '(tab-width estarter-tab-width)
