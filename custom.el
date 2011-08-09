@@ -34,7 +34,7 @@
  '(python-indent estarter-tab-width)
  '(ruby-indent-tabs-mode estarter-indent-tabs-mode)
  '(ruby-insert-encoding-magic-comment nil)
- '(safe-local-variable-values (quote ((js2-basic-offset . 4) (js2-basic-offset . 2) (js2-basic-offset . 8))))
+ '(safe-local-variable-values (quote ((js2-basic-offset . 4) (js2-basic-offset . 2) (js2-basic-offset . 8) (js2-strict-missing-semi-warning) (js2-strict-missing-semi-warning . t))))
  '(save-place t nil (saveplace))
  '(save-place-file "/Users/medikoo/.emacs.d/places")
  '(shift-select-mode nil)

@@ -109,6 +109,7 @@
 (ad-activate 'js2-parse-statement)
 (ad-activate 'js-proper-indentation)
 (ad-activate 'js2-indent-line)
+(make-variable-buffer-local 'js2-strict-missing-semi-warning)
 
 ;; lisp-mode
 (defvar estarter-lisp-mode-hook nil
