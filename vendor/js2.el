@@ -8027,7 +8027,7 @@ node are given relative start positions and correct lengths."
     parsers)
   "A vector mapping token types to parser functions.")
 
-(defsubst js2-parse-warn-missing-semi (beg end)
+(defun js2-parse-warn-missing-semi (beg end)
   (and js2-mode-show-strict-warnings
        js2-strict-missing-semi-warning
        (js2-add-strict-warning
