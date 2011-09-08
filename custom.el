@@ -13,6 +13,7 @@
  '(echo-keystrokes 0.1)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(fill-column 80)
+ '(grep-command "grep -nHre ")
  '(ido-create-new-buffer (quote always))
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
