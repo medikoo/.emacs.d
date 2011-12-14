@@ -44,7 +44,7 @@
  '(vc-make-backup-files t)
  '(visible-bell t)
  '(whitespace-line-column fill-column)
- '(whitespace-style (quote (trailing lines-tail indentation space-after-tab space-before-tab))))
+ '(whitespace-style (quote (face trailing lines-tail indentation space-after-tab space-before-tab))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
