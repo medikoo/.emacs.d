@@ -24,6 +24,7 @@
  '(js2-basic-offset estarter-tab-width)
  '(js2-highlight-level 3)
  '(js2-mirror-mode nil)
+ '(line-number-display-limit-width 9999)
  '(message-log-max t)
  '(mode-require-final-newline nil)
  '(mouse-wheel-mode t)
