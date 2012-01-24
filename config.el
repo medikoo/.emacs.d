@@ -12,3 +12,10 @@
 	(when (file-exists-p path)
 		(require 'el-fast-filelist/el-fast-filelist)
 		(el-fast-filelist path (kbd "C-;"))))
+
+(when (fboundp 'dir-locals-set-class-variables)
+	(dir-locals-set-class-variables 'impressjs
+		'((nil . ((indent-tabs-mode . nil)
+					(js2-basic-offset . 4)))))
+	(dir-locals-set-directory-class
+		"~/Projects/impress.js/" 'impressjs))
