@@ -19,3 +19,10 @@
 					(js2-basic-offset . 4)))))
 	(dir-locals-set-directory-class
 		"~/Projects/impress.js/" 'impressjs))
+
+(when (fboundp 'dir-locals-set-class-variables)
+	(dir-locals-set-class-variables 'node-jslint
+		'((nil . ((indent-tabs-mode . nil)
+					(js2-basic-offset . 4)))))
+	(dir-locals-set-directory-class
+		"~/Projects/node-jslint/" 'node-jslint))
