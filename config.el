@@ -25,4 +25,4 @@
 		'((nil . ((indent-tabs-mode . nil)
 					(js2-basic-offset . 4)))))
 	(dir-locals-set-directory-class
-		"~/Projects/node-jslint/" 'node-jslint))
+		"~/Projects/_packages/jslint/" 'node-jslint))
