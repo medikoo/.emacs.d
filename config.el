@@ -26,3 +26,10 @@
 					(js2-basic-offset . 4)))))
 	(dir-locals-set-directory-class
 		"~/Projects/_packages/jslint/" 'node-jslint))
+
+(when (fboundp 'dir-locals-set-class-variables)
+	(dir-locals-set-class-variables 'bloodhound
+		'((nil . ((indent-tabs-mode . nil)
+					(js2-basic-offset . 2)))))
+	(dir-locals-set-directory-class
+		"~/Projects/_packages/bloodhound/" 'bloodhound))
