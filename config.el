@@ -22,8 +22,7 @@
 
 (defun estarter-js2-jslintjs ()
 	"Different whitespace settings"
-	(if (string-equal js2-buffer-file-name "/Users/medikoo/Projects/_packages/jslint/lib/jslint.js")
+	(when (string-equal js2-buffer-file-name "/Users/medikoo/Projects/_packages/jslint/lib/jslint.js")
 		(setq indent-tabs-mode nil)
-		(setq js2-basic-offset . 4)))
+		(setq js2-basic-offset 4)))
 (add-hook 'estarter-js2-mode-hook 'estarter-js2-jslintjs)
-
