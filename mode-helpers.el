@@ -206,6 +206,11 @@
 	"Set js2-mode tab-width variable name"
 	(setq estarter-tab-width-name 'js2-basic-offset))
 
+(defun estarter-js2-packagejson ()
+	"Different whitespace settings"
+	(if (string-equal (substring js2-buffer-file-name -13) "/package.json")
+		(setq indent-tabs-mode nil)))
+
 (require 'vc-dir)
 (defun vc-dir-revert-buffer-function (&optional ignore-auto noconfirm)
 	"Real refresh for vc-dir buffers (works as reload)."
