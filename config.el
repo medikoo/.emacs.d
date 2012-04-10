@@ -20,6 +20,13 @@
 	(dir-locals-set-directory-class
 		"~/Projects/impress.js/" 'impressjs))
 
+(when (fboundp 'dir-locals-set-class-variables)
+	(dir-locals-set-class-variables 'nodejs
+		'((nil . ((indent-tabs-mode . nil)
+					(js2-basic-offset . 2)))))
+	(dir-locals-set-directory-class
+		"~/.nvm/src/" 'nodejs))
+
 (defun estarter-js2-jslintjs ()
 	"Different whitespace settings"
 	(when (string-equal js2-buffer-file-name
