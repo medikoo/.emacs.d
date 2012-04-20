@@ -27,6 +27,13 @@
 	(dir-locals-set-directory-class
 		"~/.nvm/src/" 'nodejs))
 
+(when (fboundp 'dir-locals-set-class-variables)
+	(dir-locals-set-class-variables 'soundcloud
+		'((nil . ((indent-tabs-mode . nil)
+					(js2-basic-offset . 2)))))
+	(dir-locals-set-directory-class
+		"~/Projects/soundcloud" 'soundcloud))
+
 (defun estarter-js2-jslintjs ()
 	"Different whitespace settings"
 	(when (string-equal js2-buffer-file-name
