@@ -34,7 +34,11 @@
 ;;; Code:
 
 (require 'font-lock)
-(require 'cl)
+;; (require 'cl)
+
+(defvar ftl-keywords
+  nil
+	"File extension for screen configurations.")
 
 (defgroup ftl nil
   "Fontifies FTL code.  see http://freemarker.org"
@@ -113,7 +117,7 @@ the mode, respectively."
 	 (font-lock-mode 1)
 	 (font-lock-fontify-buffer)))
 	 
-  (and (interactive-p)
+  (and (called-interactively-p)
        (if ftl-mode
            (message "ftl-mode is enabled")
          (message "ftl-mode is disabled")))
@@ -196,4 +200,3 @@ the mode, respectively."
 ;;      (list comment   '(0 font-lock-comment-face t)))))
 
 (provide 'ftl)
-
