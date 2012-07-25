@@ -1,10 +1,10 @@
 .DS_Store
 *.elc
 \#*#
-backups
-loaddefs.el
-loaddefs.el~
-places
-tramp
-auto-save-list
-.emacs.bmk
+/backups
+/loaddefs.el
+/loaddefs.el~
+/places
+/tramp
+/auto-save-list
+/.emacs.bmk
