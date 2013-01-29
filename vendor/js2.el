@@ -10615,9 +10615,6 @@ If so, we don't ever want to use bounce-indent."
 (require 'imenu)
 (require 'cc-cmds)  ; for `c-fill-paragraph'
 
-
-;;;###autoload (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
 ;;;###autoload
 (defun js2-mode ()
   "Major mode for editing JavaScript code."

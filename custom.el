@@ -23,6 +23,8 @@
  '(inhibit-startup-screen t)
  '(initial-major-mode (quote emacs-lisp-mode))
  '(ispell-program-name "aspell")
+ '(js-enabled-frameworks (quote (javascript)))
+ '(js-indent-level 2)
  '(js2-basic-offset estarter-tab-width)
  '(js2-highlight-level 3)
  '(js2-mirror-mode nil)
