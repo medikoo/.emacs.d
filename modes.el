@@ -98,6 +98,7 @@
 (add-hook 'estarter-html-mode-hook 'estarter-coding-hook-run)
 
 ;; js-mode
+(load (concat estarter-vendor-dir "js2"))
 (defvar estarter-js-mode-hook nil
 	"Hook that gest run on activation of `js-mode' but after file locals.")
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
