@@ -1,8 +1,8 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(auto-mode-case-fold t)
  '(auto-save-file-name-transforms (list (list ".*" (concat estarter-dotfiles-dir "auto-save-list/") t)))
  '(backup-directory-alist (list (cons "." (concat estarter-dotfiles-dir "backups/"))))
@@ -48,8 +48,8 @@
  '(whitespace-line-column fill-column)
  '(whitespace-style (quote (face trailing lines-tail indentation space-after-tab space-before-tab))))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
