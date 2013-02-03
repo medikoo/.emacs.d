@@ -101,8 +101,6 @@
 (load (concat estarter-vendor-dir "js2"))
 (defvar estarter-js-mode-hook nil
 	"Hook that gest run on activation of `js-mode' but after file locals.")
-(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx$" . js-mode))
 (add-hook 'estarter-js-mode-hook 'estarter-coding-hook-run)
 (ad-activate 'js-indent-line)
 (ad-activate 'js--proper-indentation)
@@ -110,6 +108,8 @@
 ;; js2-mode
 (defvar estarter-js2-mode-hook nil
 	"Hook that gest run on activation of `js2-mode' but after file locals.")
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-hook 'estarter-js2-mode-hook 'estarter-coding-hook-run)
 (add-hook 'estarter-js2-mode-hook 'estarter-js2-tab-width-name)
