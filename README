@@ -1,4 +1,4 @@
-emacs-starter --- Neat emacs initialization setup
+.emacs.d - My personal Emacs settings
 
 -------------------------------------------------------------------------------
 1. About
@@ -25,14 +25,10 @@ Configuration assumes that user sets his own settings via Emacs custom
 variables and others within config.el file (config.el is not present by
 default).
 
-If you like this setup I encourage you to fork it and customize it up to your
-liking. If you feel some things could be better with benefit to other users,
-I'll be more than happy to get pull request.
-
 -------------------------------------------------------------------------------
 2. Installation
 -------------------------------------------------------------------------------
 
-Clone project into your .emacs.d folder and initialize submodules:
-git submodule init
-git submodule update
+Within your home folder:
+
+$ git clone --recursive git://github.com/medikoo/.emacs.d
