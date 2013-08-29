@@ -123,7 +123,7 @@
 	:type '(string :size 64)
 	:group 'estarter)
 
-(defcustom estarter-frame-alpha 97
+(defcustom estarter-frame-alpha 93
 	"Default frame-alpha setting."
 	:tag "Default frame-alpja setting"
 	:type 'integer
@@ -158,3 +158,4 @@
 
 ;; Load screen manager
 (el-screen-init)
+(put 'dired-find-alternate-file 'disabled nil)

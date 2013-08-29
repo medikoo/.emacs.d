@@ -2056,20 +2056,7 @@ into temp buffers."
 The values are default faces to use for highlighting the keywords.")
 
 (defconst js2-reserved-words
-  '(abstract
-    boolean byte
-    char class
-    double
-    enum export extends
-    final float
-    goto
-    implements import int interface
-    long
-    native
-    package private protected public
-    short static super synchronized
-    throws transient
-    volatile))
+  '())
 
 (defconst js2-keyword-names
   (let ((table (make-hash-table :test 'equal)))
@@ -10627,9 +10614,6 @@ If so, we don't ever want to use bounce-indent."
 
 (require 'imenu)
 (require 'cc-cmds)  ; for `c-fill-paragraph'
-
-
-;;;###autoload (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;;;###autoload
 (defun js2-mode ()
