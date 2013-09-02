@@ -1295,20 +1295,17 @@ subtree.  Otherwise, insert a tab using `indent-relative'."
              (eq markdown-cycle-global-status 2))
         ;; Move from overview to contents
         (hide-sublevels 1)
-        (message "CONTENTS")
         (setq markdown-cycle-global-status 3))
 
        ((and (eq last-command this-command)
              (eq markdown-cycle-global-status 3))
         ;; Move from contents to all
         (show-all)
-        (message "SHOW ALL")
         (setq markdown-cycle-global-status 1))
 
        (t
         ;; Defaults to overview
         (hide-body)
-        (message "OVERVIEW")
         (setq markdown-cycle-global-status 2))))
 
      ((save-excursion (beginning-of-line 1) (looking-at outline-regexp))
