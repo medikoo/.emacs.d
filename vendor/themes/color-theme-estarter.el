@@ -24,7 +24,7 @@
   (interactive)
   (color-theme-install
     '(color-theme-estarter-charcoal-black
-      ((background-color . "#181818")
+      ((background-color . "#232323")
         (background-mode . dark)
         (border-color . "Grey")
         (cursor-color . "Grey")
