@@ -5,7 +5,11 @@
  ;; If there is more than one, they won't work right.
  '(ack-command "ack -a ")
  '(auto-mode-case-fold t)
- '(auto-save-file-name-transforms (list (list ".*" (concat estarter-dotfiles-dir "auto-save-list/") t)))
+ '(auto-save-file-name-transforms
+	 (list
+		 (list ".*"
+			 (concat estarter-dotfiles-dir "auto-save-list/")
+t)))
  '(backup-directory-alist (list (cons "." (concat estarter-dotfiles-dir "backups/"))))
  '(backward-delete-char-untabify-method nil)
  '(bookmark-default-file (concat estarter-dotfiles-dir ".emacs.bmk"))
@@ -13,7 +17,7 @@
  '(delete-by-moving-to-trash t)
  '(echo-keystrokes 0.1)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
- '(fill-column 80)
+ '(fill-column 100)
  '(grep-command "grep -nHre ")
  '(ido-create-new-buffer (quote always))
  '(ido-enable-flex-matching t)
@@ -39,18 +43,40 @@
  '(python-indent estarter-tab-width)
  '(ruby-indent-tabs-mode estarter-indent-tabs-mode)
  '(ruby-insert-encoding-magic-comment nil)
- '(safe-local-variable-values (quote ((js2-basic-offset . 4) (js2-basic-offset . 2) (js2-basic-offset . 8) (js2-strict-missing-semi-warning) (js2-strict-missing-semi-warning . t))))
+ '(safe-local-variable-values
+	 (quote
+		 ((js2-basic-offset . 4)
+			 (js2-basic-offset . 2)
+			 (js2-basic-offset . 8)
+			 (js2-strict-missing-semi-warning)
+			 (js2-strict-missing-semi-warning . t))))
  '(save-place t nil (saveplace))
  '(save-place-file (concat estarter-dotfiles-dir "places"))
  '(shift-select-mode nil)
- '(tab-stop-list (let ((list (list estarter-tab-width))) (while (< (car (last list)) 200) (nconc list (list (+ estarter-tab-width (car (last list)))))) list))
+ '(tab-stop-list
+	 (let
+		 ((list
+				 (list estarter-tab-width)))
+		 (while
+			 (<
+				 (car
+					 (last list))
+				 200)
+			 (nconc list
+				 (list
+					 (+ estarter-tab-width
+						 (car
+(last list))))))
+list))
  '(tab-width estarter-tab-width)
  '(truncate-partial-width-windows nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(vc-make-backup-files t)
  '(visible-bell t)
  '(whitespace-line-column fill-column)
- '(whitespace-style (quote (face trailing lines-tail indentation space-after-tab space-before-tab))))
+ '(whitespace-style
+	 (quote
+		 (face trailing lines-tail indentation space-after-tab space-before-tab))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
