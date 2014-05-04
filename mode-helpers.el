@@ -92,6 +92,9 @@
 		(if (string-equal (substring	buffer-file-name -4) ".ftl")
 			(ftl-mode 1))))
 
+(defun estarter-reset-indent-line ()
+	(setq-local indent-line-function nil))
+
 (defun estarter-indent-whitespace ()
 	(if indent-tabs-mode
 		"	"
@@ -129,158 +132,158 @@
 	However we need that value to detect whether we're in JSON file.
 	Before it is cleared we save `buffer-file-name' under this name.")
 
-(defadvice js2-reparse (before json)
-	"Update `js2-buffer-file-name'."
-	(setq js2-buffer-file-name buffer-file-name))
+	(defadvice js2-reparse (before json)
+		"Update `js2-buffer-file-name'."
+		(setq js2-buffer-file-name buffer-file-name))
 
-(defadvice js2-parse-statement (around json)
-	"Parse JSON file differently.
-	Use `js2-parse-assign-expr' if within and at begin of JSON file."
-	(if (and (= tt js2-LC)
-			js2-buffer-file-name
-			(string-equal (substring js2-buffer-file-name -5) ".json")
-			(eq (+ (el-kit-buffer-first-nonwhitespace-pos) 1) js2-ts-cursor))
-		(setq ad-return-value (js2-parse-assign-expr))
-		ad-do-it))
+	(defadvice js2-parse-statement (around json)
+		"Parse JSON file differently.
+		Use `js2-parse-assign-expr' if within and at begin of JSON file."
+		(if (and (= tt js2-LC)
+				js2-buffer-file-name
+				(string-equal (substring js2-buffer-file-name -5) ".json")
+				(eq (+ (el-kit-buffer-first-nonwhitespace-pos) 1) js2-ts-cursor))
+			(setq ad-return-value (js2-parse-assign-expr))
+			ad-do-it))
 
-(defadvice js2-mode (after run-estarter-mode-hooks)
-	"`js2-mode' is not build with `define-derived-mode',
-	in consequence it does not run `after-change-major-mode-hook'.
-	This advice makes sure it gets run."
-	(estarter-after-change-major-mode))
+	(defadvice js2-mode (after run-estarter-mode-hooks)
+		"`js2-mode' is not build with `define-derived-mode',
+		in consequence it does not run `after-change-major-mode-hook'.
+		This advice makes sure it gets run."
+		(estarter-after-change-major-mode))
 
-(defadvice js-proper-indentation (around fix-indent
-		(parse-status))
-	"Return the proper indentation for the current line."
-	(setq ad-return-value (save-excursion
-			(back-to-indentation)
-			(let ((ctrl-stmt-indent (js-ctrl-statement-indentation))
-					(same-indent-p (looking-at "[]})]\\|\\<case\\>\\|\\<default\\>"))
-					(continued-expr-p (js-continued-expression-p))
-					(bracket (nth 1 parse-status))
-					beg)
-				(cond
-					;; indent array comprehension continuation lines specially
-					((and bracket
-							(not (js2-same-line bracket))
-							(setq beg (js2-indent-in-array-comp parse-status))
-							(>= (point) (save-excursion
-									(goto-char beg)
-									(point-at-bol)))) ; at or after first loop?
-						(js2-array-comp-indentation parse-status beg))
-					(ctrl-stmt-indent)
+	(defadvice js-proper-indentation (around fix-indent
+			(parse-status))
+		"Return the proper indentation for the current line."
+		(setq ad-return-value (save-excursion
+				(back-to-indentation)
+				(let ((ctrl-stmt-indent (js-ctrl-statement-indentation))
+						(same-indent-p (looking-at "[]})]\\|\\<case\\>\\|\\<default\\>"))
+						(continued-expr-p (js-continued-expression-p))
+						(bracket (nth 1 parse-status))
+						beg)
+					(cond
+						;; indent array comprehension continuation lines specially
+						((and bracket
+								(not (js2-same-line bracket))
+								(setq beg (js2-indent-in-array-comp parse-status))
+								(>= (point) (save-excursion
+										(goto-char beg)
+										(point-at-bol)))) ; at or after first loop?
+							(js2-array-comp-indentation parse-status beg))
+						(ctrl-stmt-indent)
 
-					(bracket
-						(goto-char bracket)
-						(cond
-							((looking-at "[({[][ \t]*\\(/[/*]\\|$\\)")
-								(let ((p (parse-partial-sexp (point-at-bol) (point))))
-									(when (save-excursion (skip-chars-backward " \t)")
-											(looking-at ")"))
-										(backward-list))
+						(bracket
+							(goto-char bracket)
+							(cond
+								((looking-at "[({[][ \t]*\\(/[/*]\\|$\\)")
+									(let ((p (parse-partial-sexp (point-at-bol) (point))))
+										(when (save-excursion (skip-chars-backward " \t)")
+												(looking-at ")"))
+											(backward-list))
+										(back-to-indentation)
+										(cond (same-indent-p
+												(current-column))
+											(continued-expr-p
+												(+ (current-column) (* 2 js2-basic-offset)))
+											(t
+												(+ (current-column) js2-basic-offset)))))
+								(t
 									(back-to-indentation)
-									(cond (same-indent-p
-											(current-column))
-										(continued-expr-p
-											(+ (current-column) (* 2 js2-basic-offset)))
-										(t
-											(+ (current-column) js2-basic-offset)))))
-							(t
-								(back-to-indentation)
-								(unless same-indent-p
-									(forward-char js2-basic-offset)
-									(skip-chars-forward " \t"))
-								(current-column))))
+									(unless same-indent-p
+										(forward-char js2-basic-offset)
+										(skip-chars-forward " \t"))
+									(current-column))))
 
-					(continued-expr-p js2-basic-offset)
-					(t 0))))))
+						(continued-expr-p js2-basic-offset)
+						(t 0))))))
 
-(defadvice js--proper-indentation (around fix-indent
-		(parse-status))
-	"Return the proper indentation for the current line."
-	(setq ad-return-value (save-excursion
-			(back-to-indentation)
-			(let ((ctrl-stmt-indent (js-ctrl-statement-indentation))
-					(same-indent-p (looking-at "[]})]\\|\\<case\\>\\|\\<default\\>"))
-					(continued-expr-p (js-continued-expression-p))
-					(bracket (nth 1 parse-status))
-					beg)
-				(cond
-					;; indent array comprehension continuation lines specially
-					((and bracket
-							(not (js2-same-line bracket))
-							(setq beg (js2-indent-in-array-comp parse-status))
-							(>= (point) (save-excursion
-									(goto-char beg)
-									(point-at-bol)))) ; at or after first loop?
-						(js2-array-comp-indentation parse-status beg))
-					(ctrl-stmt-indent)
+	(defadvice js--proper-indentation (around fix-indent
+			(parse-status))
+		"Return the proper indentation for the current line."
+		(setq ad-return-value (save-excursion
+				(back-to-indentation)
+				(let ((ctrl-stmt-indent (js-ctrl-statement-indentation))
+						(same-indent-p (looking-at "[]})]\\|\\<case\\>\\|\\<default\\>"))
+						(continued-expr-p (js-continued-expression-p))
+						(bracket (nth 1 parse-status))
+						beg)
+					(cond
+						;; indent array comprehension continuation lines specially
+						((and bracket
+								(not (js2-same-line bracket))
+								(setq beg (js2-indent-in-array-comp parse-status))
+								(>= (point) (save-excursion
+										(goto-char beg)
+										(point-at-bol)))) ; at or after first loop?
+							(js2-array-comp-indentation parse-status beg))
+						(ctrl-stmt-indent)
 
-					(bracket
-						(goto-char bracket)
-						(cond
-							((looking-at "[({[][ \t]*\\(/[/*]\\|$\\)")
-								(let ((p (parse-partial-sexp (point-at-bol) (point))))
-									(when (save-excursion (skip-chars-backward " \t)")
-											(looking-at ")"))
-										(backward-list))
+						(bracket
+							(goto-char bracket)
+							(cond
+								((looking-at "[({[][ \t]*\\(/[/*]\\|$\\)")
+									(let ((p (parse-partial-sexp (point-at-bol) (point))))
+										(when (save-excursion (skip-chars-backward " \t)")
+												(looking-at ")"))
+											(backward-list))
+										(back-to-indentation)
+										(cond (same-indent-p
+												(current-column))
+											(continued-expr-p
+												(+ (current-column) (* 2 js2-basic-offset)))
+											(t
+												(+ (current-column) js2-basic-offset)))))
+								(t
 									(back-to-indentation)
-									(cond (same-indent-p
-											(current-column))
-										(continued-expr-p
-											(+ (current-column) (* 2 js2-basic-offset)))
-										(t
-											(+ (current-column) js2-basic-offset)))))
-							(t
-								(back-to-indentation)
-								(unless same-indent-p
-									(forward-char js2-basic-offset)
-									(skip-chars-forward " \t"))
-								(current-column))))
+									(unless same-indent-p
+										(forward-char js2-basic-offset)
+										(skip-chars-forward " \t"))
+									(current-column))))
 
-					(continued-expr-p js2-basic-offset)
-					(t 0))))))
+						(continued-expr-p js2-basic-offset)
+						(t 0))))))
 
-(defadvice js2-indent-line (after vars)
-	"Correct indentation for coma separated var values."
-	(if (save-excursion
-			(back-to-indentation)
-			(if (looking-at ",")
-				(insert "  ")))))
+	(defadvice js2-indent-line (after vars)
+		"Correct indentation for coma separated var values."
+		(if (save-excursion
+				(back-to-indentation)
+				(if (looking-at ",")
+					(insert "  ")))))
 
-(defadvice js-indent-line (after vars)
-	"Correct indentation for coma separated var values."
-	(if (save-excursion
-			(back-to-indentation)
-			(if (looking-at ",")
-				(insert "  ")))))
+	(defadvice js-indent-line (after vars)
+		"Correct indentation for coma separated var values."
+		(if (save-excursion
+				(back-to-indentation)
+				(if (looking-at ",")
+					(insert "  ")))))
 
-(defun estarter-js2-tab-width-name ()
-	"Set js2-mode tab-width variable name"
-	(setq estarter-tab-width-name 'js2-basic-offset))
+	(defun estarter-js2-tab-width-name ()
+		"Set js2-mode tab-width variable name"
+		(setq estarter-tab-width-name 'js2-basic-offset))
 
-(defun estarter-js2-packagejson ()
-	"Different whitespace settings"
-	(if (string-equal (substring js2-buffer-file-name -13) "/package.json")
-		(setq indent-tabs-mode nil)))
+	(defun estarter-js2-packagejson ()
+		"Different whitespace settings"
+		(if (string-equal (substring js2-buffer-file-name -13) "/package.json")
+			(setq indent-tabs-mode nil)))
 
-(require 'vc-dir)
-(defun vc-dir-revert-buffer-function (&optional ignore-auto noconfirm)
-	"Real refresh for vc-dir buffers (works as reload)."
-	(goto-char 0)
-	(let*
-		((index (search-forward "Working dir: " nil t))
-			(path (if index  (buffer-substring-no-properties index (- (search-forward "\n" nil t) 1))))
-			(window (selected-window))
-			backend buffer)
-		(when path
-			(kill-buffer (current-buffer))
-			(setq backend (vc-responsible-backend path))
-			(setq buffer (get-buffer (vc-dir-prepare-status-buffer "*vc-dir*" path backend)))
-			(set-buffer buffer)
-			(set-window-buffer window buffer)
-			(if (derived-mode-p 'vc-dir-mode)
-				(vc-dir-refresh)
+	(require 'vc-dir)
+	(defun vc-dir-revert-buffer-function (&optional ignore-auto noconfirm)
+		"Real refresh for vc-dir buffers (works as reload)."
+		(goto-char 0)
+		(let*
+			((index (search-forward "Working dir: " nil t))
+				(path (if index  (buffer-substring-no-properties index (- (search-forward "\n" nil t) 1))))
+				(window (selected-window))
+				backend buffer)
+			(when path
+				(kill-buffer (current-buffer))
+				(setq backend (vc-responsible-backend path))
+				(setq buffer (get-buffer (vc-dir-prepare-status-buffer "*vc-dir*" path backend)))
+				(set-buffer buffer)
+				(set-window-buffer window buffer)
+				(if (derived-mode-p 'vc-dir-mode)
+					(vc-dir-refresh)
 				;; FIXME: find a better way to pass the backend to `vc-dir-mode'.
 				(let ((use-vc-backend backend))
 					(vc-dir-mode)))

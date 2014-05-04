@@ -96,6 +96,7 @@
 (add-to-list 'auto-mode-alist '("\\.ftl$" . html-mode))
 (add-hook 'estarter-html-mode-hook 'estarter-ftl-support)
 (add-hook 'estarter-html-mode-hook 'estarter-coding-hook-run)
+(add-hook 'estarter-html-mode-hook 'estarter-reset-indent-line)
 
 ;; js-mode
 (load (concat estarter-vendor-dir "js2"))
