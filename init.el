@@ -67,6 +67,8 @@
 (require 'saveplace)
 (require 'el-screen/el-screen)
 (require 'markdown-mode)
+(require 'sml-modeline)
+(require 'color-theme)
 
 ;; Turn on helpful modes
 (blink-cursor-mode 1)
