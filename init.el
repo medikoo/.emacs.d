@@ -156,11 +156,11 @@
 (load custom-file 'noerror)
 
 ;; Load color theme
-(funcall estarter-color-theme)
-;; Emacs's win.el will override some face values
-;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434
-;; so we're loading it later again through `window-setup-hook'
-(add-hook 'window-setup-hook estarter-color-theme)
+;; (funcall estarter-color-theme)
+;; ;; Emacs's win.el will override some face values
+;; ;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=3434
+;; ;; so we're loading it later again through `window-setup-hook'
+;; (add-hook 'window-setup-hook estarter-color-theme)
 
 ;; Set frame alpha
 (modify-all-frames-parameters (list (cons 'alpha estarter-frame-alpha)))

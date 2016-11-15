@@ -1,5 +1,5 @@
 ;; Font
-(set-face-font 'default "-*-Anonymous Pro-*-*-*--11-*-*-*-*-*-*")
+(set-face-font 'default "-*-Anonymous Pro-*-*-*--26-*-*-*-*-*-*")
 ;; (set-face-font 'default "-*-Inconsolata-*-*-*--9-*-*-*-*-*-*")
 ;; (set-face-font 'default "-*-Anonymous-*-*-*--9-*-*-*-*-*-*")
 
