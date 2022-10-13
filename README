@@ -31,4 +31,4 @@ default).
 
 Within your home folder:
 
-$ git clone --recursive git://github.com/medikoo/.emacs.d
+$ git clone --recursive git@github.com:medikoo/.emacs.d.git
