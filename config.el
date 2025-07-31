@@ -8,17 +8,10 @@
 (push "/usr/local/git/bin" exec-path)
 (require 'el-kit/html)
 
-(let ((path "~/Documents/org/"))
+(let ((path "~/Personal/org/"))
 	(when (file-exists-p path)
 		(require 'el-fast-filelist/el-fast-filelist)
 		(el-fast-filelist path (kbd "C-;"))))
-
-(when (fboundp 'dir-locals-set-class-variables)
-	(dir-locals-set-class-variables 'impressjs
-		'((nil . ((indent-tabs-mode . nil)
-					(js2-basic-offset . 4)))))
-	(dir-locals-set-directory-class
-		"~/Projects/impress.js/" 'impressjs))
 
 (when (fboundp 'dir-locals-set-class-variables)
 	(dir-locals-set-class-variables 'nodejs
@@ -33,27 +26,6 @@
 					(js2-basic-offset . 2)))))
 	(dir-locals-set-directory-class
 		"~/Projects/_forks/" 'forks))
-
-(when (fboundp 'dir-locals-set-class-variables)
-	(dir-locals-set-class-variables 'soundcloud
-		'((nil . ((indent-tabs-mode . nil)
-					(js2-basic-offset . 2)))))
-	(dir-locals-set-directory-class
-		"~/Projects/soundcloud-playlist-manager" 'soundcloud))
-
-(when (fboundp 'dir-locals-set-class-variables)
-	(dir-locals-set-class-variables 'npm
-		'((nil . ((indent-tabs-mode . nil)
-					(js2-basic-offset . 2)))))
-	(dir-locals-set-directory-class
-		"~/Projects/npm" 'npm))
-
-(when (fboundp 'dir-locals-set-class-variables)
-	(dir-locals-set-class-variables 'querystring
-		'((nil . ((indent-tabs-mode . nil)
-					(js2-basic-offset . 2)))))
-	(dir-locals-set-directory-class
-		"~/Projects/_packages/querystring" 'querystring))
 
 (defun estarter-js2-jslintjs ()
 	"Different whitespace settings"
