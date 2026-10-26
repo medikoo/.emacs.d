@@ -1,4 +1,4 @@
-;; defun.el --- Useful methods for emacs
+;; defun.el --- Useful methods for emacs  -*- lexical-binding: t -*-
 ;;
 ;; Author:	Mariusz Nowak <mariusz+emacs@medikoo.com>
 ;; Copyright (C) 2011 Mariusz Nowak <mariusz+emacs@medikoo.com>
@@ -19,6 +19,8 @@
 ;;; Commentary
 ;;
 ;; Useful methods
+
+(require 'el-kit/string)
 
 (defun estarter-scratch ()
 	"Create new scratch buffer and switch to it."

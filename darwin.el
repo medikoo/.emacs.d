@@ -1,4 +1,4 @@
-;; darwin.el --- Mac OSX custom settings
+;; darwin.el --- Mac OSX custom settings  -*- lexical-binding: t -*-
 ;;
 ;; Author:	Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
 ;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
@@ -20,8 +20,10 @@
 ;;
 ;; Key bindings when on Mac OSX
 
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
+(defvar mac-command-modifier)
+(defvar mac-option-modifier)
+(defvar estarter-keys-minor-mode-map)
+
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 (define-key estarter-keys-minor-mode-map (kbd "M-`") 'other-frame)

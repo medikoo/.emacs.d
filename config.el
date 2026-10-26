@@ -1,3 +1,11 @@
+;; config.el --- User configuration  -*- lexical-binding: t -*-
+
+(defvar js2-buffer-file-name)
+(defvar js2-basic-offset)
+(defvar js2-mode-map)
+(declare-function el-fast-filelist "el-fast-filelist/el-fast-filelist")
+(declare-function el-screen-set-frame-title "el-screen/el-screen")
+
 ;; Font
 (set-face-font 'default "-*-Anonymous Pro-*-*-*--11-*-*-*-*-*-*")
 ;; (set-face-font 'default "-*-Inconsolata-*-*-*--9-*-*-*-*-*-*")

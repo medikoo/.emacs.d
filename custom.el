@@ -1,3 +1,5 @@
+;; custom.el --- Settings saved by Custom  -*- lexical-binding: t -*-
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -40,7 +42,7 @@ t)))
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 1) ((control)))))
  '(org-startup-truncated nil)
  '(python-guess-indent nil)
- '(python-indent estarter-tab-width)
+ '(python-indent-offset estarter-tab-width)
  '(ruby-indent-tabs-mode estarter-indent-tabs-mode)
  '(ruby-insert-encoding-magic-comment nil)
  '(safe-local-variable-values

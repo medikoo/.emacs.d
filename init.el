@@ -1,4 +1,4 @@
-;; init.el --- Where everything begins
+;; init.el --- Where everything begins  -*- lexical-binding: t -*-
 ;;
 ;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
 ;; Author: Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
@@ -61,11 +61,22 @@
 (estarter-recompile-all)
 (add-hook 'kill-emacs-hook 'estarter-recompile-all)
 
+;; Native compilation (Emacs 28+) compiles the vendored (pre `cl-lib') libraries
+;; asynchronously and reports every "function X is not known to be defined"
+;; into *Warnings*. Keep those reports in *Native-compile-Log* only.
+(when (boundp 'native-comp-async-report-warnings-errors)
+	(setq native-comp-async-report-warnings-errors 'silent))
+
+;; `cl' is obsolete, but vendored modules (el-kit, el-screen, el-indent,
+;; el-fast-filelist) still rely on its non prefixed `second', `third',
+;; `copy-list', `lexical-let*' etc.
+(with-suppressed-warnings ((obsolete cl)) (require 'cl))
+
 ;; Generate and load autoloads
-(require 'cl)
-(setq generated-autoload-file (concat estarter-dotfiles-dir "loaddefs.el"))
-(update-directory-autoloads estarter-vendor-dir)
-(load generated-autoload-file)
+(defconst estarter-autoload-file (concat estarter-dotfiles-dir "loaddefs.el")
+	"Path to generated autoloads file.")
+(loaddefs-generate estarter-vendor-dir estarter-autoload-file)
+(load estarter-autoload-file)
 
 ;; Load needed modules (ones that won't go automatically through autoload)
 (autoload 'paredit-mode "paredit"
@@ -76,6 +87,10 @@
 (require 'markdown-mode)
 (require 'sml-modeline)
 (require 'color-theme)
+;; By default color-theme loads every file in vendor/themes (both .el and .elc,
+;; including the huge color-theme-library). Load just our theme, byte-compiled.
+(setq color-theme-libraries
+	(list (concat estarter-vendor-dir "themes/color-theme-estarter")))
 
 ;; Turn on helpful modes
 (blink-cursor-mode 1)
@@ -94,7 +109,7 @@
 (random t)
 
 ;; Make life easier
-(defalias 'yes-or-no-p 'y-or-n-p)
+(setq use-short-answers t)
 
 ;; Load extra functions
 (load (concat estarter-dotfiles-dir "defun"))
@@ -110,14 +125,16 @@
 (load (concat estarter-dotfiles-dir (symbol-name system-type)) 'noerror)
 
 ;; Defaults
-(defgroup estarter nil "estarter -- initializaton setup")
+(defgroup estarter nil "estarter -- initializaton setup"
+	:group 'convenience)
 
 (defcustom estarter-tab-width 2
 	"Default tab width."
 	:tag "Default tab width"
 	:type 'integer
 	:group 'estarter)
-(setq estarter-tab-width-name 'estarter-tab-width)
+(defvar estarter-tab-width-name 'estarter-tab-width
+	"Name of variable that holds tab width for current major mode.")
 (make-variable-buffer-local 'estarter-tab-width-name)
 
 (defcustom estarter-indent-tabs-mode t

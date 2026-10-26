@@ -1,4 +1,4 @@
-;; color-theme-my.el --- Additional color themes
+;; color-theme-estarter.el --- Additional color themes  -*- lexical-binding: t -*-
 ;;
 ;; Copyright: - see individual themes
 ;; Author: - see individual themes
@@ -18,6 +18,8 @@
 
 ;; Copyright (C) 2003 Lars Chr. Hausmann
 ;; Copyright (C) 2010 Mariusz Nowak <mariusz+emacs@medikoo.com>
+(require 'color-theme)
+
 (defun color-theme-estarter-charcoal-black ()
   "Color theme by Lars Chr. Hausmann, created 2003-03-24
   .. with modifications by Mariusz Nowak (2010)."

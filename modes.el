@@ -1,4 +1,4 @@
-;; modes.el --- Custom configuration for major modes
+;; modes.el --- Custom configuration for major modes  -*- lexical-binding: t -*-
 ;;
 ;; Author:	Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
 ;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs-starter@medikoo.com>
@@ -26,9 +26,7 @@
 (add-hook 'estarter-coding-hook 'estarter-hl-line-mode)
 (add-hook 'estarter-coding-hook 'estarter-whitespace-mode)
 
-;; Expand snippets only after character input
-(ad-activate 'yas/get-snippet-tables)
-(ad-activate 'yas/expand)
+;; Snippets are expanded only after character input (see advices in mode-helpers.el)
 
 ;; Emacs lisp source specific customizations
 (when (fboundp 'dir-locals-set-class-variables)
@@ -79,7 +77,7 @@
 (add-hook 'estarter-emacs-lisp-mode-hook 'estarter-pretty-lambdas)
 (require 'el-indent/lisp)
 (add-hook 'estarter-emacs-lisp-mode-hook 'el-indent-set-lisp)
-(add-hook 'estarter-emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'estarter-emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'estarter-emacs-lisp-mode-hook 'estarter-remove-elc-on-save)
 (add-hook 'estarter-emacs-lisp-mode-hook 'estarter-show-point-mode)
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
@@ -105,8 +103,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . js-mode))
 (add-hook 'estarter-js-mode-hook 'estarter-coding-hook-run)
-(ad-activate 'js-indent-line)
-(ad-activate 'js--proper-indentation)
 
 ;; js2-mode
 (defvar estarter-js2-mode-hook nil
@@ -115,11 +111,6 @@
 (add-hook 'estarter-js2-mode-hook 'estarter-coding-hook-run)
 (add-hook 'estarter-js2-mode-hook 'estarter-js2-tab-width-name)
 (add-hook 'estarter-js2-mode-hook 'estarter-js2-packagejson)
-(ad-activate 'js2-mode)
-(ad-activate 'js2-reparse)
-(ad-activate 'js2-parse-statement)
-(ad-activate 'js-proper-indentation)
-(ad-activate 'js2-indent-line)
 (make-variable-buffer-local 'js2-strict-missing-semi-warning)
 
 ;; lisp-mode
@@ -130,7 +121,6 @@
 (add-hook 'estarter-lisp-mode-hook 'estarter-pretty-lambdas)
 (require 'el-indent/lisp)
 (add-hook 'estarter-lisp-mode-hook 'el-indent-set-lisp)
-(ad-activate 'indent-sexp)
 
 ;; markdown-mode
 (defvar estarter-markdown-mode-hook nil

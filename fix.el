@@ -1,3 +1,9 @@
+;; fix.el --- Fixes for broken or not working properly functions  -*- lexical-binding: t -*-
+
+(defvar yas/backquote-lisp-expression-regexp)
+(declare-function yas/restore-escapes "yasnippet")
+(declare-function yas/read-and-eval-string "yasnippet")
+
 ;; Original one works bad when we try to search buffer within snippet
 ;; see http://code.google.com/p/yasnippet/issues/detail?id=139
 (defun yas/replace-backquotes ()

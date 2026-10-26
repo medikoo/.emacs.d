@@ -1,4 +1,4 @@
-;; keys.el --- Custom key bindings for Emacs
+;; keys.el --- Custom key bindings for Emacs  -*- lexical-binding: t -*-
 ;;
 ;; Author:	Mariusz Nowak <mariusz+emacs@medikoo.com>
 ;; Copyright (C) 2010, 2011 Mariusz Nowak <mariusz+emacs@medikoo.com>
@@ -59,7 +59,9 @@
 
 (define-minor-mode estarter-keys-minor-mode
 	"A minor mode that overrides specified key settings (in all major modes)."
-	t " estarter-keys" 'estarter-keys-minor-mode-map)
+	:init-value t
+	:lighter " estarter-keys"
+	:keymap estarter-keys-minor-mode-map)
 
 (estarter-keys-minor-mode 1)
 
@@ -70,7 +72,7 @@
 
 (defun estarter-keys-prority ()
 	(if (not (eq (car (car minor-mode-map-alist)) 'estarter-keys-minor-mode))
-		(let (gotit x)
+		(let (gotit)
 			(progn
 				(setq gotit nil)
 				(dolist (x minor-mode-map-alist)

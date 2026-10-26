@@ -1,3 +1,4 @@
+;;; color-theme-example.el --- Example color theme  -*- lexical-binding: nil -*-
 (eval-when-compile
   (require 'color-theme))
 

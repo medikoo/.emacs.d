@@ -1,4 +1,4 @@
-;;; ack-autoloads.el --- automatically extracted autoloads
+;;; ack-autoloads.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
