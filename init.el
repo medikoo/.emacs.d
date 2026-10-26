@@ -64,8 +64,8 @@
 ;; Native compilation (Emacs 28+) compiles the vendored (pre `cl-lib') libraries
 ;; asynchronously and reports every "function X is not known to be defined"
 ;; into *Warnings*. Keep those reports in *Native-compile-Log* only.
-(when (boundp 'native-comp-async-report-warnings-errors)
-	(setq native-comp-async-report-warnings-errors 'silent))
+(defvar native-comp-async-report-warnings-errors)
+(setq native-comp-async-report-warnings-errors 'silent)
 
 ;; `cl' is obsolete, but vendored modules (el-kit, el-screen, el-indent,
 ;; el-fast-filelist) still rely on its non prefixed `second', `third',
